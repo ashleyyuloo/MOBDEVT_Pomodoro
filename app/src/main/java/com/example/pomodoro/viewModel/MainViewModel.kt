@@ -2,6 +2,8 @@ package com.example.pomodoro.viewModel
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

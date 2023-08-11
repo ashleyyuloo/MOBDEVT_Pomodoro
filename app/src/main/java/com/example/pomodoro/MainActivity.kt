@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
@@ -25,10 +26,49 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
+import com.example.pomodoro.viewModel.TaskItem
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        // Save your task list data into the bundle
+        val taskItems = mutableListOf<TaskItem>()
+        for (i in 0 until binding.taskList.childCount) {
+            val taskView = binding.taskList.getChildAt(i)
+            val taskText = taskView.findViewById<TextView>(R.id.txtTask).text.toString()
+            val isChecked = taskView.findViewById<CheckBox>(R.id.checkboxCompleted).isChecked
+            taskItems.add(TaskItem(taskText, isChecked))
+        }
+        outState.putParcelableArrayList("taskList", ArrayList(taskItems))
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        // Restore the task list data from the bundle
+        val taskItems = savedInstanceState.getParcelableArrayList<TaskItem>("taskList")
+        if (taskItems != null) {
+            for (taskItem in taskItems) {
+                val newTaskView = ItemTaskBinding.inflate(layoutInflater)
+                newTaskView.txtTask.text = taskItem.task?.toEditable() // Convert String to Editable
+                newTaskView.checkboxCompleted.isChecked = taskItem.isChecked
+
+                toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask, taskItem.isChecked)
+                deleteTask(newTaskView.btnDeleteTask)
+                changeFocus(newTaskView.txtTask)
+
+                binding.taskList.addView(newTaskView.root)
+            }
+        }
+    }
+
+    // Extension function to convert String to Editable
+    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,15 +115,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addNewTaskView() {
+    private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskView = ItemTaskBinding.inflate(layoutInflater)
-        toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask)
+        toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask, isChecked)
         deleteTask(newTaskView.btnDeleteTask)
         changeFocus(newTaskView.txtTask)
         binding.taskList.addView(newTaskView.root)
     }
 
-    private fun toggleCheckbox(checkbox: CheckBox, textView: TextView) {
+    private fun toggleCheckbox(checkbox: CheckBox, textView: TextView, isChecked: Boolean) {
+        if (isChecked) {
+            textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            textView.paintFlags = textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
+
         checkbox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
