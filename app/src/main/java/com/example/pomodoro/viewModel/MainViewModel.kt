@@ -34,7 +34,6 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private var isWorkSession = false
     var pausedTime: Long = 0
 
-
     init {
         updateTimerDisplay(_workSession)
     }

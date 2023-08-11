@@ -12,10 +12,6 @@
         "source": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\ic_settings.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout_item_task.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout/item_task.xml"
-    },
-    {
         "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\activity_main.xml"
     },
@@ -30,6 +26,10 @@
     {
         "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout-land_activity_main.xml.flat",
+        "source": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout-land\\activity_main.xml"
     },
     {
         "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\raw_triangle_open.mp3.flat",
@@ -66,6 +66,10 @@
     {
         "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.pomodoro.app-merged_res-35:/layout-land_activity_main.xml.flat",
+        "source": "com.example.pomodoro.app-main-37:/layout-land/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\PC\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xhdpi_ic_launcher.webp.flat",
