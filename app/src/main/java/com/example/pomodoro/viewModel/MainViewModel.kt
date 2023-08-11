@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 
 //gets the application context from the MainActivity
 class MainViewModel(private val applicationContext: Context) : ViewModel() {
+
     private lateinit var mediaPlayer: MediaPlayer
 
     private val _session = MutableLiveData<String>()
@@ -30,6 +31,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private var remainingTime: Long = 0
     private var isWorkSession = false
     var pausedTime: Long = 0
+
 
     init {
         updateTimerDisplay(_workSession)

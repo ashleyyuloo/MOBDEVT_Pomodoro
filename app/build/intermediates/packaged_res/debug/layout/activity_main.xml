@@ -93,7 +93,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="24dp"
         android:text="Pause"
         app:layout_constraintBottom_toTopOf="@+id/taskLayout"
         app:layout_constraintEnd_toStartOf="@+id/btnPlay"
@@ -113,60 +113,71 @@
         app:layout_constraintTop_toTopOf="@+id/btnPlay"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TableLayout
+    <LinearLayout
         android:id="@+id/taskLayout"
         android:layout_width="0dp"
         android:layout_height="400dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Tasks"
-                android:textSize="24sp" />
-
-            <Button
-                android:id="@+id/btnClearTasks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clear" />
-        </TableRow>
-
-        <LinearLayout
-            android:id="@+id/taskList"
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical">
-        </LinearLayout>
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-            <Button
-                android:id="@+id/btnAddTasks"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Tasks"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/btnClearTasks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear" />
+            </TableRow>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/taskList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"></LinearLayout>
+
+            </ScrollView>
+
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal|fill|fill_horizontal|center_vertical"
-                android:layout_marginBottom="32dp"
-                android:text="Add Task" />
-        </TableRow>
-    </TableLayout>
+                android:gravity="center">
 
-
-    <!-- To do List -->
+                <Button
+                    android:id="@+id/btnAddTasks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal|fill|fill_horizontal|center_vertical"
+                    android:layout_marginBottom="32dp"
+                    android:text="Add Task" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

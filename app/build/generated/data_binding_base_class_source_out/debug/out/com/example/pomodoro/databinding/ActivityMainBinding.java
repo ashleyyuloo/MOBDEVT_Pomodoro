@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,7 +50,7 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ImageView imageView4;
 
   @NonNull
-  public final TableLayout taskLayout;
+  public final LinearLayout taskLayout;
 
   @NonNull
   public final LinearLayout taskList;
@@ -62,8 +61,9 @@ public final class ActivityMainBinding implements ViewBinding {
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnAddTasks,
       @NonNull Button btnClearTasks, @NonNull Button btnPause, @NonNull Button btnPlay,
       @NonNull Button btnStop, @NonNull ImageView imageView, @NonNull ImageView imageView2,
-      @NonNull ImageView imageView3, @NonNull ImageView imageView4, @NonNull TableLayout taskLayout,
-      @NonNull LinearLayout taskList, @NonNull TextView txtTimer) {
+      @NonNull ImageView imageView3, @NonNull ImageView imageView4,
+      @NonNull LinearLayout taskLayout, @NonNull LinearLayout taskList,
+      @NonNull TextView txtTimer) {
     this.rootView = rootView;
     this.btnAddTasks = btnAddTasks;
     this.btnClearTasks = btnClearTasks;
@@ -161,7 +161,7 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       id = R.id.taskLayout;
-      TableLayout taskLayout = ViewBindings.findChildViewById(rootView, id);
+      LinearLayout taskLayout = ViewBindings.findChildViewById(rootView, id);
       if (taskLayout == null) {
         break missingId;
       }

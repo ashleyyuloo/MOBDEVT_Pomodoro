@@ -1,3 +1,4 @@
+
 package com.example.pomodoro
 
 import android.content.Context
@@ -5,18 +6,24 @@ import android.content.Intent
 import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
+import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -58,38 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnAddTasks.setOnClickListener {
-                val newTaskView = layoutInflater.inflate(R.layout.item_task, null)
-                val checkboxCompleted = newTaskView.findViewById<CheckBox>(R.id.checkboxCompleted)
-                val txtTask = newTaskView.findViewById<EditText>(R.id.txtTask)
-                val btnDeleteTask = newTaskView.findViewById<Button>(R.id.btnDeleteTask)
-
-                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
-                checkboxCompleted.setOnCheckedChangeListener { _, isChecked ->
-                    if (isChecked) {
-                        txtTask.paintFlags = txtTask.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-                    } else {
-                        txtTask.paintFlags = txtTask.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-                    }
-                }
-
-                // Set a focus change listener to show the keyboard when EditText gains focus
-                txtTask.setOnFocusChangeListener { _, hasFocus ->
-                    if (hasFocus) {
-                        inputMethodManager.showSoftInput(txtTask, InputMethodManager.SHOW_IMPLICIT)
-                    }
-                }
-
-                btnDeleteTask.setOnClickListener {
-                    taskList.removeView(newTaskView) // Remove the task when the delete button is clicked
-                }
-
-                taskList.addView(newTaskView) // Add the new task view to the LinearLayout
-                txtTask.requestFocus() // Set focus on the EditText
+                addNewTaskView()
             }
-
-
-
 
             btnClearTasks.setOnClickListener{
                 binding.taskList.removeAllViews()
@@ -97,6 +74,64 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    private fun addNewTaskView() {
+        val newTaskView = ItemTaskBinding.inflate(layoutInflater)
+        toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask)
+        deleteTask(newTaskView.btnDeleteTask)
+        changeFocus(newTaskView.txtTask)
+        binding.taskList.addView(newTaskView.root)
+    }
+
+    private fun toggleCheckbox(checkbox: CheckBox, textView: TextView) {
+        checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                textView.paintFlags = textView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            } else {
+                textView.paintFlags = textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
+        }
+    }
+
+    private fun deleteTask(deleteButton: Button) {
+        deleteButton.setOnClickListener {
+            binding.taskList.removeView(deleteButton.parent as View)
+        }
+    }
+
+    private fun changeFocus(editText: EditText) {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+        editText.requestFocus()
+        editText.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
+            }
+        }
+
+        editText.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
+                inputMethodManager.hideSoftInputFromWindow(editText.windowToken, 0)
+                editText.clearFocus()
+                binding.btnAddTasks.requestFocus()
+                true
+            } else {
+                false
+            }
+        }
+
+        editText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                inputMethodManager.hideSoftInputFromWindow(editText.windowToken, 0)
+                editText.clearFocus()
+                binding.btnAddTasks.requestFocus()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
 
     private fun updateCircleIndicators(completedWorkSessions: Int) {
         for (i in 0 until circleImageViews.size) {
