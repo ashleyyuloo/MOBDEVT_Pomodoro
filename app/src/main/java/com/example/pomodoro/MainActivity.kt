@@ -35,7 +35,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     data class Task(val name: String, val isCompleted: Boolean = false)
-    private val taskList = mutableListOf<Task>()
+    private val ListTask = mutableListOf<Task>()
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnPause.setOnClickListener {
-                viewModel.pauseTimer()
+                //viewModel.pauseTimer()
+                printTaskList()
             }
 
             btnStop.setOnClickListener {
@@ -79,8 +80,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
-//                binding.taskList.removeAllViews()
-                printTaskList()
+                binding.taskList.removeAllViews()
+                ListTask.clear()
             }
 
         }
@@ -89,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
-        newTaskView.tag = taskList.size // Assign a unique identifier to the view
+        newTaskView.tag = ListTask.size // Assign a unique identifier to the view
 
         toggleCheckbox(newTaskViewBinding.checkboxCompleted, newTaskViewBinding.txtTask, isChecked)
         deleteTask(newTaskViewBinding.btnDeleteTask)
@@ -106,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 delay(1000) // Wait for 1 second of inactivity in typing
                 if (taskName.isNotEmpty()) {
                     val task = Task(taskName, isChecked)
-                    taskList.add(task)
+                    ListTask.add(task)
                 }
             }
         }
@@ -128,12 +129,12 @@ class MainActivity : AppCompatActivity() {
 
             val taskName = textView.text.toString().trim()
             val task = Task(taskName, isChecked)
-            val existingTaskIndex = taskList.indexOfFirst { it.name == taskName }
+            val existingTaskIndex = ListTask.indexOfFirst { it.name == taskName }
 
             if (existingTaskIndex >= 0) {
-                taskList[existingTaskIndex] = task // Update existing task
+                ListTask[existingTaskIndex] = task // Update existing task
             } else {
-                taskList.add(task) // Add new task
+                ListTask.add(task) // Add new task
             }
         }
     }
@@ -142,16 +143,17 @@ class MainActivity : AppCompatActivity() {
         deleteButton.setOnClickListener {
             val taskView = deleteButton.parent as View
             val taskId = taskView.tag as Int // Retrieve the unique identifier
-            taskList.removeAt(taskId) // Remove the corresponding task from the list
+            ListTask.removeAt(taskId) // Remove the corresponding task from the list
             binding.taskList.removeView(taskView)
         }
     }
 
     private fun printTaskList() {
-        for (task in taskList) {
+        for (task in ListTask) {
             Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
         }
     }
+
 
     /*
     private fun changeFocus(editText: EditText) {
