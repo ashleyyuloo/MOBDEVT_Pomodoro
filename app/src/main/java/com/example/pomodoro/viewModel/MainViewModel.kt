@@ -46,6 +46,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         listOfTasks.value?.clear()
     }
 
+
     private lateinit var mediaPlayer: MediaPlayer
 
     private val _session = MutableLiveData<String>()

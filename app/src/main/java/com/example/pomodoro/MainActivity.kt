@@ -27,6 +27,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -95,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
         tasks.forEachIndexed { index, task ->
             val taskViewBinding = ItemTaskBinding.inflate(layoutInflater)
-            taskViewBinding.txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
             taskViewBinding.checkboxCompleted.isChecked = task.isCompleted
 
             val taskView = taskViewBinding.root
@@ -106,37 +106,65 @@ class MainActivity : AppCompatActivity() {
                 taskViewBinding.txtTask,
                 task.isCompleted
             )
+
+            taskViewBinding.txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
+
+            if (task.isCompleted) {
+                taskViewBinding.txtTask.isEnabled = false
+            }
+
             deleteTask(taskViewBinding.btnDeleteTask)
 
             binding.taskList.addView(taskView)
         }
     }
-
+    private var isNewTaskViewAdded = false
 
     private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
-        newTaskView.tag = viewModel.listOfTasks.value?.size ?: 0
 
         toggleCheckbox(newTaskViewBinding.checkboxCompleted, newTaskViewBinding.txtTask, isChecked)
         deleteTask(newTaskViewBinding.btnDeleteTask)
 
-        binding.taskList.addView(newTaskView)
-
         val taskEditText = newTaskViewBinding.txtTask
-        var taskAddDelayJob: Job? = null
 
-        taskEditText.addTextChangedListener { editable ->
-            val taskName = editable.toString().trim()
-            taskAddDelayJob?.cancel()
-            taskAddDelayJob = CoroutineScope(Dispatchers.Main).launch {
-                delay(1000)
+        taskEditText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                val taskName = taskEditText.text.toString().trim()
                 if (taskName.isNotEmpty()) {
-                    val task = MainViewModel.Task(taskName, isChecked)
-                    viewModel.addTask(task)
+                    val existingTask = viewModel.listOfTasks.value?.find { it.name == taskName }
+
+                    if (existingTask != null) {
+                        Snackbar.make(binding.root, "Task with the same name already exists", Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(taskEditText.windowToken, 0)
+                        val task = MainViewModel.Task(taskName, isChecked)
+                        viewModel.addTask(task)
+
+                        isNewTaskViewAdded = false // Reset the flag
+                        binding.btnAddTasks.requestFocus()
+                    }
+
+                    true
+                } else {
+                    isNewTaskViewAdded = true // Set the flag
+                    false
                 }
+            } else {
+                false
             }
         }
+
+        binding.taskList.addView(newTaskView)
+
+        // Request focus on the EditText
+        taskEditText.requestFocus()
+
+        // Show the keyboard
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(taskEditText, InputMethodManager.SHOW_IMPLICIT)
     }
 
 
@@ -179,42 +207,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
         }
     }
-
-
-    /*
-    private fun changeFocus(editText: EditText) {
-        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
-        editText.requestFocus()
-        editText.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT)
-            }
-        }
-
-        editText.setOnKeyListener { _, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN) {
-                inputMethodManager.hideSoftInputFromWindow(editText.windowToken, 0)
-                editText.clearFocus()
-                binding.btnAddTasks.requestFocus()
-                true
-            } else {
-                false
-            }
-        }
-
-        editText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                inputMethodManager.hideSoftInputFromWindow(editText.windowToken, 0)
-                editText.clearFocus()
-                binding.btnAddTasks.requestFocus()
-                true
-            } else {
-                false
-            }
-        }
-    }
-*/
 
     private fun updateCircleIndicators(completedWorkSessions: Int) {
         for (i in 0 until circleImageViews.size) {
