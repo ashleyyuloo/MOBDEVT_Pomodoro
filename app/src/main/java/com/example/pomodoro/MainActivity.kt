@@ -16,23 +16,15 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,8 +111,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private var isNewTaskViewAdded = false
+    private var isTypingInProgress = false
 
     private fun addNewTaskView(isChecked: Boolean = false) {
+        if (isNewTaskViewAdded || isTypingInProgress) {
+            return // Do not add a new task view if already adding or typing
+        }
+
+        isNewTaskViewAdded = true // Set the flag
+
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
 
@@ -147,12 +146,15 @@ class MainActivity : AppCompatActivity() {
                         binding.btnAddTasks.requestFocus()
                     }
 
+                    isTypingInProgress = false // Typing finished
                     true
                 } else {
+                    isTypingInProgress = false // Typing finished
                     isNewTaskViewAdded = true // Set the flag
                     false
                 }
             } else {
+                isTypingInProgress = true // Typing in progress
                 false
             }
         }
@@ -166,7 +168,6 @@ class MainActivity : AppCompatActivity() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(taskEditText, InputMethodManager.SHOW_IMPLICIT)
     }
-
 
     private fun toggleCheckbox(checkbox: CheckBox, textView: TextView, isChecked: Boolean) {
         if (isChecked) {
