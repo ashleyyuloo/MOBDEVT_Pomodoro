@@ -16,6 +16,20 @@ import kotlinx.coroutines.launch
 
 //gets the application context from the MainActivity
 class MainViewModel(private val applicationContext: Context) : ViewModel() {
+    data class Task(val name: String, val isCompleted: Boolean = false)
+
+    private val _tasks = MutableLiveData<List<Task>>()
+    val tasks: LiveData<List<Task>> = _tasks
+
+    init {
+        _tasks.value = emptyList() // Initialize with an empty list
+    }
+
+    fun addTask(task: Task) {
+        _tasks.value = (_tasks.value ?: emptyList()) + listOf(task)
+    }
+
+
 
     private lateinit var mediaPlayer: MediaPlayer
 

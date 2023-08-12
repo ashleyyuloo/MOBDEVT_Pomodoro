@@ -27,7 +27,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
-import com.example.pomodoro.viewModel.TaskItem
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -89,14 +88,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
+        val newTaskView = newTaskViewBinding.root
+        newTaskView.tag = taskList.size // Assign a unique identifier to the view
+
         toggleCheckbox(newTaskViewBinding.checkboxCompleted, newTaskViewBinding.txtTask, isChecked)
         deleteTask(newTaskViewBinding.btnDeleteTask)
 
-        val newTaskView = newTaskViewBinding.root
         binding.taskList.addView(newTaskView)
 
         val taskEditText = newTaskViewBinding.txtTask // Store a reference to the EditText
-
         var taskAddDelayJob: Job? = null
 
         taskEditText.addTextChangedListener { editable ->
@@ -140,9 +140,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun deleteTask(deleteButton: Button) {
         deleteButton.setOnClickListener {
-            binding.taskList.removeView(deleteButton.parent as View)
+            val taskView = deleteButton.parent as View
+            val taskId = taskView.tag as Int // Retrieve the unique identifier
+            taskList.removeAt(taskId) // Remove the corresponding task from the list
+            binding.taskList.removeView(taskView)
         }
     }
+
     private fun printTaskList() {
         for (task in taskList) {
             Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
