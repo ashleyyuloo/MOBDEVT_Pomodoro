@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnClearTasks.isEnabled = false
         newTaskViewBinding.btnDeleteTask.isEnabled = false
+        binding.btnAddTasks.isEnabled = false
 
         taskEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -140,10 +141,10 @@ class MainActivity : AppCompatActivity() {
 
                         isNewTaskViewAdded = false // Reset the flag
                         binding.btnAddTasks.requestFocus()
+                        binding.btnClearTasks.isEnabled = true
+                        newTaskViewBinding.btnDeleteTask.isEnabled = true
+                        binding.btnAddTasks.isEnabled = true
                     }
-
-                    binding.btnClearTasks.isEnabled = true
-                    newTaskViewBinding.btnDeleteTask.isEnabled = true
 
                     true
                 } else {
