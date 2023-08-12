@@ -21,54 +21,25 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
 import com.example.pomodoro.viewModel.TaskItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+    data class Task(val name: String, val isCompleted: Boolean = false)
+    private val taskList = mutableListOf<Task>()
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        // Save your task list data into the bundle
-        val taskItems = mutableListOf<TaskItem>()
-        for (i in 0 until binding.taskList.childCount) {
-            val taskView = binding.taskList.getChildAt(i)
-            val taskText = taskView.findViewById<TextView>(R.id.txtTask).text.toString()
-            val isChecked = taskView.findViewById<CheckBox>(R.id.checkboxCompleted).isChecked
-            taskItems.add(TaskItem(taskText, isChecked))
-        }
-        outState.putParcelableArrayList("taskList", ArrayList(taskItems))
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        // Restore the task list data from the bundle
-        val taskItems = savedInstanceState.getParcelableArrayList<TaskItem>("taskList")
-        if (taskItems != null) {
-            for (taskItem in taskItems) {
-                val newTaskView = ItemTaskBinding.inflate(layoutInflater)
-                newTaskView.txtTask.text = taskItem.task?.toEditable() // Convert String to Editable
-                newTaskView.checkboxCompleted.isChecked = taskItem.isChecked
-
-                toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask, taskItem.isChecked)
-                deleteTask(newTaskView.btnDeleteTask)
-                changeFocus(newTaskView.txtTask)
-
-                binding.taskList.addView(newTaskView.root)
-            }
-        }
-    }
-
-    // Extension function to convert String to Editable
-    fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,18 +80,36 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
-                binding.taskList.removeAllViews()
+//                binding.taskList.removeAllViews()
+                printTaskList()
             }
 
         }
     }
 
     private fun addNewTaskView(isChecked: Boolean = false) {
-        val newTaskView = ItemTaskBinding.inflate(layoutInflater)
-        toggleCheckbox(newTaskView.checkboxCompleted, newTaskView.txtTask, isChecked)
-        deleteTask(newTaskView.btnDeleteTask)
-        changeFocus(newTaskView.txtTask)
-        binding.taskList.addView(newTaskView.root)
+        val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
+        toggleCheckbox(newTaskViewBinding.checkboxCompleted, newTaskViewBinding.txtTask, isChecked)
+        deleteTask(newTaskViewBinding.btnDeleteTask)
+
+        val newTaskView = newTaskViewBinding.root
+        binding.taskList.addView(newTaskView)
+
+        val taskEditText = newTaskViewBinding.txtTask // Store a reference to the EditText
+
+        var taskAddDelayJob: Job? = null
+
+        taskEditText.addTextChangedListener { editable ->
+            val taskName = editable.toString().trim()
+            taskAddDelayJob?.cancel() // Cancel the previous job to prevent adding task prematurely
+            taskAddDelayJob = CoroutineScope(Dispatchers.Main).launch {
+                delay(1000) // Wait for 1 second of inactivity in typing
+                if (taskName.isNotEmpty()) {
+                    val task = Task(taskName, isChecked)
+                    taskList.add(task)
+                }
+            }
+        }
     }
 
     private fun toggleCheckbox(checkbox: CheckBox, textView: TextView, isChecked: Boolean) {
@@ -136,6 +125,16 @@ class MainActivity : AppCompatActivity() {
             } else {
                 textView.paintFlags = textView.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
             }
+
+            val taskName = textView.text.toString().trim()
+            val task = Task(taskName, isChecked)
+            val existingTaskIndex = taskList.indexOfFirst { it.name == taskName }
+
+            if (existingTaskIndex >= 0) {
+                taskList[existingTaskIndex] = task // Update existing task
+            } else {
+                taskList.add(task) // Add new task
+            }
         }
     }
 
@@ -144,7 +143,13 @@ class MainActivity : AppCompatActivity() {
             binding.taskList.removeView(deleteButton.parent as View)
         }
     }
+    private fun printTaskList() {
+        for (task in taskList) {
+            Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
+        }
+    }
 
+    /*
     private fun changeFocus(editText: EditText) {
         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
@@ -177,7 +182,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+*/
 
     private fun updateCircleIndicators(completedWorkSessions: Int) {
         for (i in 0 until circleImageViews.size) {
