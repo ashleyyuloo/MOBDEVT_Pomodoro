@@ -110,16 +110,9 @@ class MainActivity : AppCompatActivity() {
             binding.taskList.addView(taskView)
         }
     }
+
     private var isNewTaskViewAdded = false
-    private var isTypingInProgress = false
-
     private fun addNewTaskView(isChecked: Boolean = false) {
-        if (isNewTaskViewAdded || isTypingInProgress) {
-            return // Do not add a new task view if already adding or typing
-        }
-
-        isNewTaskViewAdded = true // Set the flag
-
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
 
@@ -127,6 +120,9 @@ class MainActivity : AppCompatActivity() {
         deleteTask(newTaskViewBinding.btnDeleteTask)
 
         val taskEditText = newTaskViewBinding.txtTask
+
+        binding.btnClearTasks.isEnabled = false
+        newTaskViewBinding.btnDeleteTask.isEnabled = false
 
         taskEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -146,15 +142,15 @@ class MainActivity : AppCompatActivity() {
                         binding.btnAddTasks.requestFocus()
                     }
 
-                    isTypingInProgress = false // Typing finished
+                    binding.btnClearTasks.isEnabled = true
+                    newTaskViewBinding.btnDeleteTask.isEnabled = true
+
                     true
                 } else {
-                    isTypingInProgress = false // Typing finished
                     isNewTaskViewAdded = true // Set the flag
                     false
                 }
             } else {
-                isTypingInProgress = true // Typing in progress
                 false
             }
         }
