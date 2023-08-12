@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pomodoro.MainActivity
 import com.example.pomodoro.MainHelper
 import com.example.pomodoro.R
 import kotlinx.coroutines.Job
@@ -18,18 +19,32 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val applicationContext: Context) : ViewModel() {
     data class Task(val name: String, val isCompleted: Boolean = false)
 
-    private val _tasks = MutableLiveData<List<Task>>()
-    val tasks: LiveData<List<Task>> = _tasks
-
-    init {
-        _tasks.value = emptyList() // Initialize with an empty list
-    }
+    val listOfTasks: MutableLiveData<MutableList<Task>> = MutableLiveData(mutableListOf())
 
     fun addTask(task: Task) {
-        _tasks.value = (_tasks.value ?: emptyList()) + listOf(task)
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        updatedList.add(task)
+        listOfTasks.value = updatedList
     }
 
+    fun updateTask(task: Task) {
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        val existingTaskIndex = updatedList.indexOfFirst { it.name == task.name }
+        if (existingTaskIndex >= 0) {
+            updatedList[existingTaskIndex] = task
+            listOfTasks.value = updatedList
+        }
+    }
 
+    fun removeTask(task: Task) {
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        updatedList.remove(task)
+        listOfTasks.value = updatedList
+    }
+
+    fun clearTasks() {
+        listOfTasks.value?.clear()
+    }
 
     private lateinit var mediaPlayer: MediaPlayer
 

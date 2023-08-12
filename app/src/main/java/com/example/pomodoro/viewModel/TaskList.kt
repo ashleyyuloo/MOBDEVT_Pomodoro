@@ -3,7 +3,7 @@ package com.example.pomodoro.viewModel
 import android.os.Parcel
 import android.os.Parcelable
 
-data class TaskItem(val task: String?, var isChecked: Boolean) : Parcelable {
+data class Task(val task: String?, var isChecked: Boolean) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readByte() != 0.toByte()
@@ -18,12 +18,12 @@ data class TaskItem(val task: String?, var isChecked: Boolean) : Parcelable {
         TODO("Not yet implemented")
     }
 
-    companion object CREATOR : Parcelable.Creator<TaskItem> {
-        override fun createFromParcel(parcel: Parcel): TaskItem {
-            return TaskItem(parcel)
+    companion object CREATOR : Parcelable.Creator<Task> {
+        override fun createFromParcel(parcel: Parcel): Task {
+            return Task(parcel)
         }
 
-        override fun newArray(size: Int): Array<TaskItem?> {
+        override fun newArray(size: Int): Array<Task?> {
             return arrayOfNulls(size)
         }
     }

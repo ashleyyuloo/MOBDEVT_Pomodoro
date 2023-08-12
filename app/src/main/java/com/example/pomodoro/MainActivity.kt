@@ -34,11 +34,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    data class Task(val name: String, val isCompleted: Boolean = false)
-    private val ListTask = mutableListOf<Task>()
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
+
+    val viewModel by viewModels<MainViewModel> {
+        MainViewModelFactory(applicationContext) // Pass the application context here
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,14 +48,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         circleImageViews = listOf(binding.imageView, binding.imageView2, binding.imageView3, binding.imageView4)
 
-        val viewModel by viewModels<MainViewModel> {
-            MainViewModelFactory(applicationContext) // Pass the application context here
-        }
+
         viewModel.session.observe(this) {
             binding.txtTimer.text = it.toString()
         }
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
             updateCircleIndicators(completedWorkSessions)
+        }
+        viewModel.listOfTasks.observe(this) { tasks ->
+            setupTaskViews(tasks)
         }
 
         with(binding){
@@ -80,38 +83,62 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
+                viewModel.clearTasks()
                 binding.taskList.removeAllViews()
-                ListTask.clear()
             }
 
         }
     }
 
+    private fun setupTaskViews(tasks: List<MainViewModel.Task>) {
+        binding.taskList.removeAllViews()
+
+        tasks.forEachIndexed { index, task ->
+            val taskViewBinding = ItemTaskBinding.inflate(layoutInflater)
+            taskViewBinding.txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
+            taskViewBinding.checkboxCompleted.isChecked = task.isCompleted
+
+            val taskView = taskViewBinding.root
+            taskView.tag = index
+
+            toggleCheckbox(
+                taskViewBinding.checkboxCompleted,
+                taskViewBinding.txtTask,
+                task.isCompleted
+            )
+            deleteTask(taskViewBinding.btnDeleteTask)
+
+            binding.taskList.addView(taskView)
+        }
+    }
+
+
     private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
-        newTaskView.tag = ListTask.size // Assign a unique identifier to the view
+        newTaskView.tag = viewModel.listOfTasks.value?.size ?: 0
 
         toggleCheckbox(newTaskViewBinding.checkboxCompleted, newTaskViewBinding.txtTask, isChecked)
         deleteTask(newTaskViewBinding.btnDeleteTask)
 
         binding.taskList.addView(newTaskView)
 
-        val taskEditText = newTaskViewBinding.txtTask // Store a reference to the EditText
+        val taskEditText = newTaskViewBinding.txtTask
         var taskAddDelayJob: Job? = null
 
         taskEditText.addTextChangedListener { editable ->
             val taskName = editable.toString().trim()
-            taskAddDelayJob?.cancel() // Cancel the previous job to prevent adding task prematurely
+            taskAddDelayJob?.cancel()
             taskAddDelayJob = CoroutineScope(Dispatchers.Main).launch {
-                delay(1000) // Wait for 1 second of inactivity in typing
+                delay(1000)
                 if (taskName.isNotEmpty()) {
-                    val task = Task(taskName, isChecked)
-                    ListTask.add(task)
+                    val task = MainViewModel.Task(taskName, isChecked)
+                    viewModel.addTask(task)
                 }
             }
         }
     }
+
 
     private fun toggleCheckbox(checkbox: CheckBox, textView: TextView, isChecked: Boolean) {
         if (isChecked) {
@@ -128,28 +155,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             val taskName = textView.text.toString().trim()
-            val task = Task(taskName, isChecked)
-            val existingTaskIndex = ListTask.indexOfFirst { it.name == taskName }
-
-            if (existingTaskIndex >= 0) {
-                ListTask[existingTaskIndex] = task // Update existing task
-            } else {
-                ListTask.add(task) // Add new task
-            }
+            val task = MainViewModel.Task(taskName, isChecked)
+            viewModel.updateTask(task) // Update the task in the ViewModel
         }
     }
+
 
     private fun deleteTask(deleteButton: Button) {
         deleteButton.setOnClickListener {
             val taskView = deleteButton.parent as View
-            val taskId = taskView.tag as Int // Retrieve the unique identifier
-            ListTask.removeAt(taskId) // Remove the corresponding task from the list
+            val taskId = taskView.tag as Int
+            val task = viewModel.listOfTasks.value?.get(taskId)
+            task?.let {
+                viewModel.removeTask(it) // Remove the task from the ViewModel
+            }
             binding.taskList.removeView(taskView)
         }
     }
 
     private fun printTaskList() {
-        for (task in ListTask) {
+        val tasks = viewModel.listOfTasks.value
+        tasks?.forEach { task ->
             Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
         }
     }
@@ -199,6 +225,38 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val tasks = viewModel.listOfTasks.value ?: return
+        val taskStates = tasks.associate { it.name to it.isCompleted }
+
+        val bundle = Bundle()
+        for ((key, value) in taskStates) {
+            bundle.putBoolean(key, value)
+        }
+
+        outState.putBundle("taskStatesBundle", bundle)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        val bundle = savedInstanceState.getBundle("taskStatesBundle")
+        val taskStates = mutableMapOf<String, Boolean>()
+
+        bundle?.keySet()?.forEach { key ->
+            val value = bundle.getBoolean(key)
+            taskStates[key] = value
+        }
+
+        taskStates.forEach { (taskName, isCompleted) ->
+            val task = MainViewModel.Task(taskName, isCompleted)
+            viewModel.updateTask(task)
+        }
+    }
+
 
     // to go to settings
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
