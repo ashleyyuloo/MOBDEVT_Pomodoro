@@ -1,34 +1,44 @@
 package com.example.pomodoro
 
-class MainHelper {
-    companion object{
+import android.util.Log
 
-        private var workSession: Int = 25
-        private var shortBreak: Int = 5
-        private var longBreak: Int = 15
+class MainHelper {
+    companion object {
+        private var workSession: Int = 2
+        private var shortBreak: Int = 1
+        private var longBreak: Int = 1
 
         fun getWorkSession(): Long {
-            return convertToMillis(workSession)
+            val workSessionInMillis = convertToMillis(workSession)
+            Log.d("MainHelper", "getWorkSession: $workSessionInMillis")
+            return workSessionInMillis
         }
 
         fun setWorkSession(minutes: Int) {
             workSession = minutes
+            Log.d("MainHelper", "setWorkSession: $workSession")
         }
 
         fun getShortBreak(): Long {
-            return convertToMillis(shortBreak)
+            val shortBreakInMillis = convertToMillis(shortBreak)
+            Log.d("MainHelper", "getShortBreak: $shortBreakInMillis")
+            return shortBreakInMillis
         }
 
         fun setShortBreak(minutes: Int) {
             shortBreak = minutes
+            Log.d("TestingMainHelper", "setShortBreak: $shortBreak")
         }
 
         fun getLongBreak(): Long {
-            return convertToMillis(longBreak)
+            val longBreakInMillis = convertToMillis(longBreak)
+            Log.d("TestingMainHelper", "getLongBreak: $longBreakInMillis")
+            return longBreakInMillis
         }
 
         fun setLongBreak(minutes: Int) {
             longBreak = minutes
+            Log.d("TestingMainHelper", "setLongBreak: $longBreak")
         }
 
         private fun convertToMillis(minutes: Int): Long {

@@ -57,8 +57,12 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     }
 
     init {
+        _workSessionDuration.value = MainHelper.getWorkSession()
+        _shortBreakDuration.value = MainHelper.getShortBreak()
+        _longBreakDuration.value = MainHelper.getLongBreak()
         updateTimerDisplay(_workSessionDuration.value!!)
     }
+
 
     private fun playSound(){
         mediaPlayer = MediaPlayer.create(applicationContext, R.raw.triangle_open)
@@ -79,13 +83,11 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
 
     private fun startShortBreak() {
         isWorkSession = false
-        playSound()
         startTimer(_shortBreakDuration.value!!)
     }
 
     private fun startLongBreak() {
         isWorkSession = false
-        playSound()
         startTimer(_longBreakDuration.value!!)
     }
 

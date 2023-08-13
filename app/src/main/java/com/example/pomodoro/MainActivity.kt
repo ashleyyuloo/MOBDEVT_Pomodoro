@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
 
-    private val viewModel by viewModels<MainViewModel> {
-        MainViewModelFactory(applicationContext) // Pass the application context here
+    val viewModel by viewModels<MainViewModel> {
+        MainViewModelFactory(applicationContext)
     }
 
     private val taskViewModel by viewModels<TaskViewModel>()
@@ -57,6 +57,22 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.listOfTasks.observe(this) { tasks ->
             setupTaskViews(tasks)
         }
+
+        viewModel.workSessionDuration.observe(this) { newDuration ->
+            Log.d("TestingMainActivity", "Work Session Duration observed: $newDuration")
+            // Update UI or perform other actions...
+        }
+
+        viewModel.shortBreakDuration.observe(this) { newDuration ->
+            Log.d("TestingMainActivity", "Short Break Duration observed: $newDuration")
+            // Update UI or perform other actions...
+        }
+
+        viewModel.longBreakDuration.observe(this) { newDuration ->
+            Log.d("TestingMainActivity", "Long Break Duration observed: $newDuration")
+            // Update UI or perform other actions...
+        }
+
 
         with(binding){
             if (savedInstanceState != null) {

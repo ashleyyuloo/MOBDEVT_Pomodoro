@@ -18,8 +18,9 @@ class SettingsActivity : AppCompatActivity() {
     private val colorButtonsMap = mutableMapOf<Button, Boolean>()
 
     val viewModel by viewModels<MainViewModel> {
-        MainActivity.MainViewModelFactory(applicationContext) // Pass the application context here
+        MainActivity.MainViewModelFactory(applicationContext)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -185,6 +186,7 @@ class SettingsActivity : AppCompatActivity() {
         }
         setupTextViews()
     }
+
 
 
     //go back to home
