@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.pomodoro.databinding.ActivityMainBinding
 import com.example.pomodoro.databinding.ItemTaskBinding
 import com.example.pomodoro.viewModel.MainViewModel
+import com.example.pomodoro.viewModel.TaskViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<MainViewModel> {
         MainViewModelFactory(applicationContext) // Pass the application context here
     }
+    val taskViewModel by viewModels<TaskViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
             updateCircleIndicators(completedWorkSessions)
         }
-        viewModel.listOfTasks.observe(this) { tasks ->
+        taskViewModel.listOfTasks.observe(this) { tasks ->
             setupTaskViews(tasks)
         }
 
@@ -59,6 +61,11 @@ class MainActivity : AppCompatActivity() {
                 binding.btnPlay.visibility = savedInstanceState.getInt("btnPlayVisibility", View.VISIBLE)
                 binding.btnPause.visibility = savedInstanceState.getInt("btnPauseVisibility", View.GONE)
                 binding.btnStop.visibility = savedInstanceState.getInt("btnStopVisibility", View.GONE)
+            }
+            else{
+                btnPlay.visibility = View.VISIBLE
+                btnPause.visibility = View.GONE
+                btnStop.visibility = View.GONE
             }
 
             btnPlay.setOnClickListener {
@@ -94,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
-                viewModel.clearTasks()
+                taskViewModel.clearTasks()
                 binding.taskList.removeAllViews()
             }
 
@@ -103,86 +110,64 @@ class MainActivity : AppCompatActivity() {
 
     private var editingTaskIndex: Int = -1
     @SuppressLint("ClickableViewAccessibility")
-    private fun setupTaskViews(tasks: List<MainViewModel.Task>) {
+    private fun setupTaskViews(tasks: List<TaskViewModel.Task>) {
         binding.taskList.removeAllViews()
 
         tasks.forEachIndexed { index, task ->
             val taskViewBinding = ItemTaskBinding.inflate(layoutInflater)
-            taskViewBinding.checkboxCompleted.isChecked = task.isCompleted
-
             val taskView = taskViewBinding.root
             taskView.tag = index
 
-            toggleCheckbox(
-                taskViewBinding.checkboxCompleted,
-                taskViewBinding.txtTask,
-                task.isCompleted
-            )
+            with(taskViewBinding) {
+                checkboxCompleted.isChecked = task.isCompleted
+                txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
 
-            taskViewBinding.txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
+                toggleCheckbox(checkboxCompleted, txtTask, task.isCompleted)
 
-            if (task.isCompleted) {
-                taskViewBinding.txtTask.isEnabled = false
-            }
-            taskViewBinding.txtTask.setOnTouchListener { _, event ->
-                when (event.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        // Handle touch down event if needed
-                        false // Allow default touch behavior
-                    }
-                    MotionEvent.ACTION_UP -> {
+                txtTask.isEnabled = !task.isCompleted
+                txtTask.setOnTouchListener { _, event ->
+                    if (event.action == MotionEvent.ACTION_UP) {
                         val clickedTaskIndex = taskView.tag as Int
 
                         if (editingTaskIndex != clickedTaskIndex) {
-                            // If a different task is being edited, save the previous one (if any)
                             editingTaskIndex.takeIf { it != -1 }?.let { previousTaskIndex ->
-                                val previousTask = tasks[previousTaskIndex]
-                                previousTask.name = taskViewBinding.txtTask.text.toString()
+                                tasks[previousTaskIndex].name = txtTask.text.toString()
                             }
 
-                            // Start editing the clicked task
                             editingTaskIndex = clickedTaskIndex
-                            taskViewBinding.txtTask.isEnabled = true
-                            taskViewBinding.txtTask.requestFocus()
+                            txtTask.isEnabled = true
+                            txtTask.requestFocus()
                         }
 
                         binding.btnAddTasks.isEnabled = false
-
-                        false // Allow default touch behavior
                     }
-                    else -> false
-                }
-            }
-
-            taskViewBinding.txtTask.setOnEditorActionListener { _, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_DONE || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                    editingTaskIndex.takeIf { it != -1 }?.let { editedTaskIndex ->
-                        val editedTask = tasks[editedTaskIndex]
-                        editedTask.name = taskViewBinding.txtTask.text.toString()
-                        Log.d("EditTextClick", "Updated task: ${editedTask.name}")
-
-                        // Hide the keyboard
-                        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        inputMethodManager.hideSoftInputFromWindow(taskViewBinding.txtTask.windowToken, 0)
-
-                        // Finish editing
-                        editingTaskIndex = -1
-                        taskViewBinding.txtTask.clearFocus()
-                    }
-                    true
-                } else {
                     false
                 }
+
+                txtTask.setOnEditorActionListener { _, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_DONE || (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        editingTaskIndex.takeIf { it != -1 }?.let { editedTaskIndex ->
+                            tasks[editedTaskIndex].name = txtTask.text.toString()
+
+                            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            inputMethodManager.hideSoftInputFromWindow(txtTask.windowToken, 0)
+
+                            editingTaskIndex = -1
+                            txtTask.clearFocus()
+                        }
+                        true
+                    } else {
+                        false
+                    }
+                }
+
+                deleteTask(btnDeleteTask)
             }
-
-
-            deleteTask(taskViewBinding.btnDeleteTask)
 
             binding.taskList.addView(taskView)
         }
     }
 
-    private var isNewTaskViewAdded = false
     private fun addNewTaskView(isChecked: Boolean = false) {
         val newTaskViewBinding = ItemTaskBinding.inflate(layoutInflater)
         val newTaskView = newTaskViewBinding.root
@@ -200,25 +185,22 @@ class MainActivity : AppCompatActivity() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val taskName = taskEditText.text.toString().trim()
                 if (taskName.isNotEmpty()) {
-                    val existingTask = viewModel.listOfTasks.value?.find { it.name == taskName }
+                    val existingTask = taskViewModel.listOfTasks.value?.find { it.name == taskName }
 
                     if (existingTask != null) {
                         Snackbar.make(binding.root, "Task with the same name already exists", Snackbar.LENGTH_SHORT).show()
                     } else {
                         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         imm.hideSoftInputFromWindow(taskEditText.windowToken, 0)
-                        val task = MainViewModel.Task(taskName, isChecked)
-                        viewModel.addTask(task)
+                        val task = TaskViewModel.Task(taskName, isChecked)
+                        taskViewModel.addTask(task)
 
-                        isNewTaskViewAdded = false // Reset the flag
-                        binding.btnAddTasks.requestFocus()
                         binding.btnClearTasks.isEnabled = true
                         newTaskViewBinding.btnDeleteTask.isEnabled = true
                         binding.btnAddTasks.isEnabled = true
                     }
                     true
                 } else {
-                    isNewTaskViewAdded = true // Set the flag
                     false
                 }
             } else {
@@ -251,8 +233,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             val taskName = textView.text.toString().trim()
-            val task = MainViewModel.Task(taskName, isChecked)
-            viewModel.updateTask(task) // Update the task in the ViewModel
+            val task = TaskViewModel.Task(taskName, isChecked)
+            taskViewModel.updateTask(task) // Update the task in the ViewModel
         }
     }
 
@@ -261,9 +243,9 @@ class MainActivity : AppCompatActivity() {
         deleteButton.setOnClickListener {
             val taskView = deleteButton.parent as View
             val taskId = taskView.tag as Int
-            val task = viewModel.listOfTasks.value?.get(taskId)
+            val task = taskViewModel.listOfTasks.value?.get(taskId)
             task?.let {
-                viewModel.removeTask(it) // Remove the task from the ViewModel
+                taskViewModel.removeTask(it) // Remove the task from the ViewModel
             }
             binding.taskList.removeView(taskView)
         }
@@ -282,7 +264,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        val tasks = viewModel.listOfTasks.value ?: return
+        val tasks = taskViewModel.listOfTasks.value ?: return
         val taskStates = tasks.associate { it.name to it.isCompleted }
 
         val bundle = Bundle()
@@ -308,11 +290,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         taskStates.forEach { (taskName, isCompleted) ->
-            val task = MainViewModel.Task(taskName, isCompleted)
-            viewModel.updateTask(task)
+            val task = TaskViewModel.Task(taskName, isCompleted)
+            taskViewModel.updateTask(task)
         }
     }
-
 
     // to go to settings
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

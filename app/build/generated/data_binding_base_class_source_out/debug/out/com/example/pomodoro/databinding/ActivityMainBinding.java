@@ -49,6 +49,38 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final ImageView imageView4;
 
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
+  public final LinearLayout linearLayout;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   */
+  @Nullable
+  public final LinearLayout linearLayout2;
+
   @NonNull
   public final LinearLayout taskLayout;
 
@@ -62,6 +94,7 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull Button btnClearTasks, @NonNull Button btnPause, @NonNull Button btnPlay,
       @NonNull Button btnStop, @NonNull ImageView imageView, @NonNull ImageView imageView2,
       @NonNull ImageView imageView3, @NonNull ImageView imageView4,
+      @Nullable LinearLayout linearLayout, @Nullable LinearLayout linearLayout2,
       @NonNull LinearLayout taskLayout, @NonNull LinearLayout taskList,
       @NonNull TextView txtTimer) {
     this.rootView = rootView;
@@ -74,6 +107,8 @@ public final class ActivityMainBinding implements ViewBinding {
     this.imageView2 = imageView2;
     this.imageView3 = imageView3;
     this.imageView4 = imageView4;
+    this.linearLayout = linearLayout;
+    this.linearLayout2 = linearLayout2;
     this.taskLayout = taskLayout;
     this.taskList = taskList;
     this.txtTimer = txtTimer;
@@ -160,6 +195,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.linearLayout;
+      LinearLayout linearLayout = ViewBindings.findChildViewById(rootView, id);
+
+      id = R.id.linearLayout2;
+      LinearLayout linearLayout2 = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.taskLayout;
       LinearLayout taskLayout = ViewBindings.findChildViewById(rootView, id);
       if (taskLayout == null) {
@@ -179,8 +220,8 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((ConstraintLayout) rootView, btnAddTasks, btnClearTasks,
-          btnPause, btnPlay, btnStop, imageView, imageView2, imageView3, imageView4, taskLayout,
-          taskList, txtTimer);
+          btnPause, btnPlay, btnStop, imageView, imageView2, imageView3, imageView4, linearLayout,
+          linearLayout2, taskLayout, taskList, txtTimer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
