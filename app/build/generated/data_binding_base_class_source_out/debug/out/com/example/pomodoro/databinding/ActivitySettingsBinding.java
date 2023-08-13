@@ -4,6 +4,7 @@ package com.example.pomodoro.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -30,6 +31,57 @@ public final class ActivitySettingsBinding implements ViewBinding {
   public final LinearLayout WorkSessionLayout;
 
   @NonNull
+  public final Button btnColor1;
+
+  @NonNull
+  public final Button btnColor10;
+
+  @NonNull
+  public final Button btnColor11;
+
+  @NonNull
+  public final Button btnColor12;
+
+  @NonNull
+  public final Button btnColor13;
+
+  @NonNull
+  public final Button btnColor14;
+
+  @NonNull
+  public final Button btnColor15;
+
+  @NonNull
+  public final Button btnColor16;
+
+  @NonNull
+  public final Button btnColor2;
+
+  @NonNull
+  public final Button btnColor3;
+
+  @NonNull
+  public final Button btnColor4;
+
+  @NonNull
+  public final Button btnColor5;
+
+  @NonNull
+  public final Button btnColor6;
+
+  @NonNull
+  public final Button btnColor7;
+
+  @NonNull
+  public final Button btnColor8;
+
+  @NonNull
+  public final Button btnColor9;
+
+  @NonNull
+  public final TextView textView;
+
+  @NonNull
   public final TextView txtLongMin;
 
   @NonNull
@@ -49,14 +101,36 @@ public final class ActivitySettingsBinding implements ViewBinding {
 
   private ActivitySettingsBinding(@NonNull ConstraintLayout rootView,
       @NonNull LinearLayout LongBreakLayout, @NonNull LinearLayout ShortBreakLayout,
-      @NonNull LinearLayout WorkSessionLayout, @NonNull TextView txtLongMin,
-      @NonNull TextView txtLongTitle, @NonNull TextView txtShortMin,
-      @NonNull TextView txtShortTitle, @NonNull TextView txtWorkMin,
+      @NonNull LinearLayout WorkSessionLayout, @NonNull Button btnColor1,
+      @NonNull Button btnColor10, @NonNull Button btnColor11, @NonNull Button btnColor12,
+      @NonNull Button btnColor13, @NonNull Button btnColor14, @NonNull Button btnColor15,
+      @NonNull Button btnColor16, @NonNull Button btnColor2, @NonNull Button btnColor3,
+      @NonNull Button btnColor4, @NonNull Button btnColor5, @NonNull Button btnColor6,
+      @NonNull Button btnColor7, @NonNull Button btnColor8, @NonNull Button btnColor9,
+      @NonNull TextView textView, @NonNull TextView txtLongMin, @NonNull TextView txtLongTitle,
+      @NonNull TextView txtShortMin, @NonNull TextView txtShortTitle, @NonNull TextView txtWorkMin,
       @NonNull TextView txtWorkTitle) {
     this.rootView = rootView;
     this.LongBreakLayout = LongBreakLayout;
     this.ShortBreakLayout = ShortBreakLayout;
     this.WorkSessionLayout = WorkSessionLayout;
+    this.btnColor1 = btnColor1;
+    this.btnColor10 = btnColor10;
+    this.btnColor11 = btnColor11;
+    this.btnColor12 = btnColor12;
+    this.btnColor13 = btnColor13;
+    this.btnColor14 = btnColor14;
+    this.btnColor15 = btnColor15;
+    this.btnColor16 = btnColor16;
+    this.btnColor2 = btnColor2;
+    this.btnColor3 = btnColor3;
+    this.btnColor4 = btnColor4;
+    this.btnColor5 = btnColor5;
+    this.btnColor6 = btnColor6;
+    this.btnColor7 = btnColor7;
+    this.btnColor8 = btnColor8;
+    this.btnColor9 = btnColor9;
+    this.textView = textView;
     this.txtLongMin = txtLongMin;
     this.txtLongTitle = txtLongTitle;
     this.txtShortMin = txtShortMin;
@@ -110,6 +184,108 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnColor1;
+      Button btnColor1 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor1 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor10;
+      Button btnColor10 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor10 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor11;
+      Button btnColor11 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor11 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor12;
+      Button btnColor12 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor12 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor13;
+      Button btnColor13 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor13 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor14;
+      Button btnColor14 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor14 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor15;
+      Button btnColor15 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor15 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor16;
+      Button btnColor16 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor16 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor2;
+      Button btnColor2 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor2 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor3;
+      Button btnColor3 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor3 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor4;
+      Button btnColor4 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor4 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor5;
+      Button btnColor5 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor5 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor6;
+      Button btnColor6 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor6 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor7;
+      Button btnColor7 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor7 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor8;
+      Button btnColor8 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor8 == null) {
+        break missingId;
+      }
+
+      id = R.id.btnColor9;
+      Button btnColor9 = ViewBindings.findChildViewById(rootView, id);
+      if (btnColor9 == null) {
+        break missingId;
+      }
+
+      id = R.id.textView;
+      TextView textView = ViewBindings.findChildViewById(rootView, id);
+      if (textView == null) {
+        break missingId;
+      }
+
       id = R.id.txtLongMin;
       TextView txtLongMin = ViewBindings.findChildViewById(rootView, id);
       if (txtLongMin == null) {
@@ -147,8 +323,10 @@ public final class ActivitySettingsBinding implements ViewBinding {
       }
 
       return new ActivitySettingsBinding((ConstraintLayout) rootView, LongBreakLayout,
-          ShortBreakLayout, WorkSessionLayout, txtLongMin, txtLongTitle, txtShortMin, txtShortTitle,
-          txtWorkMin, txtWorkTitle);
+          ShortBreakLayout, WorkSessionLayout, btnColor1, btnColor10, btnColor11, btnColor12,
+          btnColor13, btnColor14, btnColor15, btnColor16, btnColor2, btnColor3, btnColor4,
+          btnColor5, btnColor6, btnColor7, btnColor8, btnColor9, textView, txtLongMin, txtLongTitle,
+          txtShortMin, txtShortTitle, txtWorkMin, txtWorkTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

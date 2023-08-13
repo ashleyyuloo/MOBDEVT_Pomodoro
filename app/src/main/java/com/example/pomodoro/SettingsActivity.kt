@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import androidx.activity.viewModels
 import com.example.pomodoro.databinding.ActivitySettingsBinding
 import com.example.pomodoro.databinding.EditSessionBinding
@@ -29,6 +30,37 @@ class SettingsActivity : AppCompatActivity() {
 
             LongBreakLayout.setOnClickListener {
                 showEditSessionDialog("LongBreak")
+            }
+
+            val blackButtons = arrayOf(btnColor1, btnColor3, btnColor4, btnColor5, btnColor6, btnColor8, btnColor10, btnColor11, btnColor13, btnColor14)
+            val whiteButtons = arrayOf(btnColor2, btnColor7, btnColor9, btnColor12, btnColor15, btnColor16)
+
+            var lastClickedButton: Button? =  null
+
+            for (button in blackButtons + whiteButtons) {
+                button.setOnClickListener {
+                    if (lastClickedButton != null) {
+                        lastClickedButton?.tag = false
+                        lastClickedButton?.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+                    }
+
+                    val currentState = button.tag as Boolean? ?: false
+                    button.tag = !currentState
+
+                    if (!currentState) {
+                        if (button in blackButtons) {
+                            button.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                R.drawable.baseline_check_box_24, 0, 0, 0
+                            )
+                        } else {
+                            button.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                R.drawable.white_check_box_24, 0, 0, 0
+                            )
+                        }
+                    }
+
+                    lastClickedButton = button
+                }
             }
 
             txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
