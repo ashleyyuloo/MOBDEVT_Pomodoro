@@ -61,6 +61,8 @@ id imageView
 id imageView2
 id imageView3
 id imageView4
+id linearLayout
+id linearLayout2
 id taskLayout
 id taskList
 id textView

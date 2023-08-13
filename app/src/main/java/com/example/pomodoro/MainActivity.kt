@@ -55,7 +55,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         with(binding){
+            if (savedInstanceState != null) {
+                binding.btnPlay.visibility = savedInstanceState.getInt("btnPlayVisibility", View.VISIBLE)
+                binding.btnPause.visibility = savedInstanceState.getInt("btnPauseVisibility", View.GONE)
+                binding.btnStop.visibility = savedInstanceState.getInt("btnStopVisibility", View.GONE)
+            }
+
             btnPlay.setOnClickListener {
+
+                btnPlay.visibility = View.GONE // Hide Play button
+                btnPause.visibility = View.VISIBLE // Show Pause button
+                btnStop.visibility = View.VISIBLE // Show Stop button
+
                 if (viewModel.pausedTime > 0) {
                     viewModel.startTimer(viewModel.pausedTime)
                     viewModel.pausedTime = 0
@@ -65,10 +76,16 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnPause.setOnClickListener {
+                btnPlay.visibility = View.VISIBLE // Show Play button
+                btnPause.visibility = View.GONE // Hide Pause button
+                btnStop.visibility = View.VISIBLE // Show Stop button
                 viewModel.pauseTimer()
             }
 
             btnStop.setOnClickListener {
+                btnPlay.visibility = View.VISIBLE // Show Play button
+                btnPause.visibility = View.GONE // Hide Pause button
+                btnStop.visibility = View.GONE // Hide Stop button
                 viewModel.stopTimer()
             }
 
@@ -274,6 +291,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         outState.putBundle("taskStatesBundle", bundle)
+        outState.putInt("btnPlayVisibility", binding.btnPlay.visibility)
+        outState.putInt("btnPauseVisibility", binding.btnPause.visibility)
+        outState.putInt("btnStopVisibility", binding.btnStop.visibility)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {

@@ -26,8 +26,6 @@
         android:layout_height="10dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnPlay"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,45 +67,6 @@
         app:srcCompat="@drawable/circle_outline" />
 
     <!-- Pause - Play - Stop -->
-
-    <Button
-        android:id="@+id/btnPlay"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Play"
-        app:layout_constraintBottom_toTopOf="@+id/btnPause"
-        app:layout_constraintEnd_toEndOf="@+id/btnPause"
-        app:layout_constraintEnd_toStartOf="@+id/taskLayout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnPause" />
-
-    <Button
-        android:id="@+id/btnPause"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Pause"
-        app:layout_constraintBottom_toTopOf="@+id/btnStop"
-        app:layout_constraintEnd_toEndOf="@+id/btnStop"
-        app:layout_constraintEnd_toStartOf="@+id/taskLayout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnStop" />
-
-    <Button
-        android:id="@+id/btnStop"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Stop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/taskLayout"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/taskLayout"
@@ -178,6 +137,47 @@
                     android:text="Add Task" />
             </TableRow>
         </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/taskLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <Button
+            android:id="@+id/btnPlay"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="157dp" />
+
+        <Button
+            android:id="@+id/btnPause"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pause"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="213dp" />
+
+        <Button
+            android:id="@+id/btnStop"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="269dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
