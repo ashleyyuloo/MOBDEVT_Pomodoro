@@ -25,18 +25,32 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private val _workSessionCounter = MutableLiveData<Int>(0)
     val workSessionCounter: LiveData<Int> = _workSessionCounter
 
-    private val _workSession = MainHelper.getWorkSession()
-    private val _shortBreak = MainHelper.getShortBreak()
-    private val _longBreak = MainHelper.getLongBreak()
+    private val _workSessionDuration = MutableLiveData<Long>()
+    val workSessionDuration: LiveData<Long> = _workSessionDuration
+
+    private val _shortBreakDuration = MutableLiveData<Long>()
+    val shortBreakDuration: LiveData<Long> = _shortBreakDuration
+
+    private val _longBreakDuration = MutableLiveData<Long>()
+    val longBreakDuration: LiveData<Long> = _longBreakDuration
 
     private var job: Job? = null // to get the coroutine job (used for timer)
     private var remainingTime: Long = 0
     private var isWorkSession = false
     var pausedTime: Long = 0
 
+    fun updateDurations() {
+        _workSessionDuration.value = MainHelper.getWorkSession()
+        _shortBreakDuration.value = MainHelper.getShortBreak()
+        _longBreakDuration.value = MainHelper.getLongBreak()
+    }
+
 
     init {
-        updateTimerDisplay(_workSession)
+        _workSessionDuration.value = MainHelper.getWorkSession()
+        _shortBreakDuration.value = MainHelper.getShortBreak()
+        _longBreakDuration.value = MainHelper.getLongBreak()
+        updateTimerDisplay(_workSessionDuration.value!!)
     }
 
     private fun playSound(){
@@ -46,72 +60,69 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         }
         mediaPlayer!!.start()
     }
-
     fun startWorkSession() {
         isWorkSession = true
-        if (pausedTime > 0) { // if there is a paused value, start the session from the pausedTime
+        if (pausedTime > 0) {
             startTimer(pausedTime)
             pausedTime = 0
         } else {
-            startTimer(_workSession) // play it from the start
+            startTimer(_workSessionDuration.value!!)
         }
     }
 
     private fun startShortBreak() {
         isWorkSession = false
         playSound()
-        startTimer(_shortBreak)
+        startTimer(_shortBreakDuration.value!!)
     }
 
     private fun startLongBreak() {
         isWorkSession = false
         playSound()
-        startTimer(_longBreak)
+        startTimer(_longBreakDuration.value!!)
     }
 
     fun startTimer(duration: Long) {
-        job?.cancel() // cancel or stop any running timer
+        job?.cancel()
         job = viewModelScope.launch {
             remainingTime = duration
 
             while (remainingTime > 0) {
                 updateTimerDisplay(remainingTime)
-                delay(1000) // wait for 1 second
-                remainingTime -= 1000 // subtract 1 second from the time (countdown)
+                delay(1000)
+                remainingTime -= 1000
             }
             timerFinished()
         }
     }
 
-    // Actions to be performed when the timer finishes
     private fun timerFinished() {
         if (isWorkSession) {
             _workSessionCounter.value = _workSessionCounter.value!! + 1
 
             if (_workSessionCounter.value == 4) {
-                startLongBreak() // after 4 work sessions = longbreak
+                startLongBreak()
             } else {
-                startShortBreak() // short break after ever sessions
+                startShortBreak()
             }
         } else {
             playSound()
             startWorkSession()
             if (_workSessionCounter.value == 4) {
-                _workSessionCounter.value = 0 // reset work session after 4 session
-                //placed here so that the circles reset after the long break
+                _workSessionCounter.value = 0
             }
         }
     }
 
     fun pauseTimer() {
         job?.cancel()
-        pausedTime = remainingTime // store the current time (remaining) in the paused time
+        pausedTime = remainingTime
     }
 
     fun stopTimer() {
         job?.cancel()
-        _workSessionCounter.value = 0 // restart the progress
-        updateTimerDisplay(_workSession)
+        _workSessionCounter.value = 0
+        updateTimerDisplay(_workSessionDuration.value!!)
     }
 
     private fun updateTimerDisplay(millis: Long) {
@@ -128,7 +139,6 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
             String.format("%02d:%02d:%02d", hours, minutes, seconds)
         }
     }
-
 
 
     data class Task(var name: String, val isCompleted: Boolean = false)

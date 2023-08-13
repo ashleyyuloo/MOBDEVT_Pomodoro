@@ -3,9 +3,9 @@ package com.example.pomodoro
 class MainHelper {
     companion object{
 
-        private var workSession: Int = 25
-        private var shortBreak: Int = 5
-        private var longBreak: Int = 15
+        private var workSession: Int = 3
+        private var shortBreak: Int = 2
+        private var longBreak: Int = 1
 
         fun getWorkSession(): Long {
             return convertToMillis(workSession)

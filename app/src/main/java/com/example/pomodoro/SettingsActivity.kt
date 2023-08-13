@@ -10,7 +10,6 @@ import com.example.pomodoro.databinding.ActivitySettingsBinding
 import com.example.pomodoro.databinding.EditSessionBinding
 import com.example.pomodoro.viewModel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
-
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
 
@@ -75,11 +74,6 @@ class SettingsActivity : AppCompatActivity() {
                     "LongBreak" -> MainHelper.setLongBreak(newValue)
                 }
 
-                viewModel.updateTimerValues(
-                    (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
-                    (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
-                    (MainHelper.getLongBreak() / (60 * 1000)).toInt()
-                )
 
                 binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
                 binding.txtShortMin.text = (MainHelper.getShortBreak() / (60 * 1000)).toString()
@@ -100,12 +94,6 @@ class SettingsActivity : AppCompatActivity() {
                     "ShortBreak" -> MainHelper.setShortBreak(newValue)
                     "LongBreak" -> MainHelper.setLongBreak(newValue)
                 }
-                viewModel.updateTimerValues(
-                    (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
-                    (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
-                    (MainHelper.getLongBreak() / (60 * 1000)).toInt()
-                )
-
 
                 binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
                 binding.txtShortMin.text = (MainHelper.getShortBreak() / (60 * 1000)).toString()
@@ -123,13 +111,6 @@ class SettingsActivity : AppCompatActivity() {
                         "ShortBreak" -> MainHelper.setShortBreak(newValue)
                         "LongBreak" -> MainHelper.setLongBreak(newValue)
                     }
-
-                    viewModel.updateTimerValues(
-                        (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
-                        (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
-                        (MainHelper.getLongBreak() / (60 * 1000)).toInt()
-                    )
-
 
                     // Update the TextViews
                     binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
