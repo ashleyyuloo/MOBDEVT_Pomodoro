@@ -12,14 +12,30 @@
     <color name="pastel_red">#EF8F83</color>
     <color name="pastel_yellow">#FAE385</color>
     <color name="pink">#ED6D84</color>
+    <color name="primary">#FE6448</color>
     <color name="purple">#A07DB7</color>
     <color name="red">#EE3A23</color>
+    <color name="secondary">#57A773</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FACA2A</color>
     <string name="app_name">pomo:dolist</string>
+    <style name="Actionbar.dark" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="background">@color/secondary</item>
+        <item name="titleTextStyle">@style/Actionbar.darktext</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Actionbar.darktext" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
     <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
         
-        
+        <item name="android:statusBarColor">@color/secondary</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="actionBarStyle">@style/Actionbar.dark</item>
+        <item name="displayOptions">showHome|useLogo|showTitle</item>
     </style>
     <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/white</item>
+    </style>
 </resources>

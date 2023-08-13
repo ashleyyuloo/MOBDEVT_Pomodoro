@@ -20,5 +20,10 @@
     <color name="blue">#1E79AE</color>
     <color name="navy_blue">#1A4895</color>
 
+    <color name="primary">#FE6448</color>
+    <color name="secondary">#57A773</color>
+
+
+
 
 </resources>

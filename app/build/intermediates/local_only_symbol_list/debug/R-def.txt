@@ -12,8 +12,10 @@ color pastel_pink
 color pastel_red
 color pastel_yellow
 color pink
+color primary
 color purple
 color red
+color secondary
 color white
 color yellow
 drawable baseline_add_24
@@ -85,7 +87,10 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 raw triangle_open
 string app_name
+style Actionbar.dark
+style Actionbar.darktext
 style Base.Theme.Pomodoro
 style Theme.Pomodoro
+style Toolbar.Button.Navigation.Tinted
 xml backup_rules
 xml data_extraction_rules
