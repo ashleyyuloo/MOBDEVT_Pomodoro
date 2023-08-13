@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.session.observe(this) {
             binding.txtTimer.text = it.toString()
         }
-
+5
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
             updateCircleIndicators(completedWorkSessions)
         }

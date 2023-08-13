@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
+import androidx.activity.viewModels
 import com.example.pomodoro.databinding.ActivitySettingsBinding
 import com.example.pomodoro.databinding.EditSessionBinding
+import com.example.pomodoro.viewModel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class SettingsActivity : AppCompatActivity() {
@@ -36,6 +38,9 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    val viewModel by viewModels<MainViewModel> {
+        MainActivity.MainViewModelFactory(applicationContext) // Pass the application context here
+    }
     private fun showEditSessionDialog(category: String) {
         val dialog = Dialog(this)
         val dialogBinding = EditSessionBinding.inflate(layoutInflater)
@@ -70,6 +75,12 @@ class SettingsActivity : AppCompatActivity() {
                     "LongBreak" -> MainHelper.setLongBreak(newValue)
                 }
 
+                viewModel.updateTimerValues(
+                    (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
+                    (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
+                    (MainHelper.getLongBreak() / (60 * 1000)).toInt()
+                )
+
                 binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
                 binding.txtShortMin.text = (MainHelper.getShortBreak() / (60 * 1000)).toString()
                 binding.txtLongMin.text = (MainHelper.getLongBreak() / (60 * 1000)).toString()
@@ -89,6 +100,12 @@ class SettingsActivity : AppCompatActivity() {
                     "ShortBreak" -> MainHelper.setShortBreak(newValue)
                     "LongBreak" -> MainHelper.setLongBreak(newValue)
                 }
+                viewModel.updateTimerValues(
+                    (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
+                    (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
+                    (MainHelper.getLongBreak() / (60 * 1000)).toInt()
+                )
+
 
                 binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
                 binding.txtShortMin.text = (MainHelper.getShortBreak() / (60 * 1000)).toString()
@@ -106,6 +123,14 @@ class SettingsActivity : AppCompatActivity() {
                         "ShortBreak" -> MainHelper.setShortBreak(newValue)
                         "LongBreak" -> MainHelper.setLongBreak(newValue)
                     }
+
+                    viewModel.updateTimerValues(
+                        (MainHelper.getWorkSession() / (60 * 1000)).toInt(),
+                        (MainHelper.getShortBreak() / (60 * 1000)).toInt(),
+                        (MainHelper.getLongBreak() / (60 * 1000)).toInt()
+                    )
+
+
                     // Update the TextViews
                     binding.txtWorkMin.text = (MainHelper.getWorkSession() / (60 * 1000)).toString()
                     binding.txtShortMin.text = (MainHelper.getShortBreak() / (60 * 1000)).toString()
