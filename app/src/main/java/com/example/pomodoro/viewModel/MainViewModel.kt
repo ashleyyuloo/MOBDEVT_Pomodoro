@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 //gets the application context from the MainActivity
 class MainViewModel(private val applicationContext: Context) : ViewModel() {
-    data class Task(val name: String, val isCompleted: Boolean = false)
+    data class Task(var name: String, val isCompleted: Boolean = false)
 
     val listOfTasks: MutableLiveData<MutableList<Task>> = MutableLiveData(mutableListOf())
 

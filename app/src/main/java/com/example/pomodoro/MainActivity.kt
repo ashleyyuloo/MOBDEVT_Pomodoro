@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -83,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private var editingTaskIndex: Int = -1
     private fun setupTaskViews(tasks: List<MainViewModel.Task>) {
         binding.taskList.removeAllViews()
 
@@ -104,6 +106,59 @@ class MainActivity : AppCompatActivity() {
             if (task.isCompleted) {
                 taskViewBinding.txtTask.isEnabled = false
             }
+            taskViewBinding.txtTask.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // Handle touch down event if needed
+                        false // Allow default touch behavior
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        val clickedTaskIndex = taskView.tag as Int
+                        val clickedTask = tasks[clickedTaskIndex]
+
+                        if (editingTaskIndex != clickedTaskIndex) {
+                            // If a different task is being edited, save the previous one (if any)
+                            editingTaskIndex.takeIf { it != -1 }?.let { previousTaskIndex ->
+                                val previousTask = tasks[previousTaskIndex]
+                                previousTask.name = taskViewBinding.txtTask.text.toString()
+                                Log.d("EditTextClick", "Edited task: ${previousTask.name}")
+                                // Update the UI for the previously edited task if needed
+                            }
+
+                            // Start editing the clicked task
+                            editingTaskIndex = clickedTaskIndex
+                            taskViewBinding.txtTask.isEnabled = true
+                            taskViewBinding.txtTask.requestFocus()
+                            Log.d("EditTextClick", "Editing task: ${clickedTask.name}")
+                        }
+
+                        false // Allow default touch behavior
+                    }
+                    else -> false
+                }
+            }
+
+            taskViewBinding.txtTask.setOnEditorActionListener { _, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE || event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
+                    editingTaskIndex.takeIf { it != -1 }?.let { editedTaskIndex ->
+                        val editedTask = tasks[editedTaskIndex]
+                        editedTask.name = taskViewBinding.txtTask.text.toString()
+                        Log.d("EditTextClick", "Updated task: ${editedTask.name}")
+
+                        // Hide the keyboard
+                        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(taskViewBinding.txtTask.windowToken, 0)
+
+                        // Finish editing
+                        editingTaskIndex = -1
+                        taskViewBinding.txtTask.clearFocus()
+                    }
+                    true
+                } else {
+                    false
+                }
+            }
+
 
             deleteTask(taskViewBinding.btnDeleteTask)
 
@@ -145,7 +200,6 @@ class MainActivity : AppCompatActivity() {
                         newTaskViewBinding.btnDeleteTask.isEnabled = true
                         binding.btnAddTasks.isEnabled = true
                     }
-
                     true
                 } else {
                     isNewTaskViewAdded = true // Set the flag
