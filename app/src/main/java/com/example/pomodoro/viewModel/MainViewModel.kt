@@ -26,6 +26,11 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private val _workSessionCounter = MutableLiveData<Int>(0)
     val workSessionCounter: LiveData<Int> = _workSessionCounter
 
+    private var job: Job? = null // to get the coroutine job (used for timer)
+    private var remainingTime: Long = 0
+    private var isWorkSession = false
+    var pausedTime: Long = 0
+
     private val _workSessionDuration = MutableLiveData<Long>()
     val workSessionDuration: LiveData<Long> = _workSessionDuration
 
@@ -34,18 +39,11 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
 
     private val _longBreakDuration = MutableLiveData<Long>()
     val longBreakDuration: LiveData<Long> = _longBreakDuration
-
-    private var job: Job? = null // to get the coroutine job (used for timer)
-    private var remainingTime: Long = 0
-    private var isWorkSession = false
-    var pausedTime: Long = 0
-
     fun updateDurations() {
         _workSessionDuration.value = MainHelper.getWorkSession()
         _shortBreakDuration.value = MainHelper.getShortBreak()
         _longBreakDuration.value = MainHelper.getLongBreak()
     }
-
 
     init {
         _workSessionDuration.value = MainHelper.getWorkSession()
