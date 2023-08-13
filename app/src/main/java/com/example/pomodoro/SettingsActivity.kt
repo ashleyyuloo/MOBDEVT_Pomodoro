@@ -3,6 +3,7 @@ package com.example.pomodoro
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -16,6 +17,9 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private val colorButtonsMap = mutableMapOf<Button, Boolean>()
 
+    val viewModel by viewModels<MainViewModel> {
+        MainActivity.MainViewModelFactory(applicationContext) // Pass the application context here
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -160,11 +164,25 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun updateMainHelperAndTextViews(category: String, newValue: Int) {
         when (category) {
-            "WorkSession" -> MainHelper.setWorkSession(newValue)
-            "ShortBreak" -> MainHelper.setShortBreak(newValue)
-            "LongBreak" -> MainHelper.setLongBreak(newValue)
-        }
+            "WorkSession" -> {
+                MainHelper.setWorkSession(newValue)
+                viewModel.updateWorkSessionDuration(newValue.toLong())
 
+                Log.d("Testing", "SA Work Time: $newValue")
+            }
+            "ShortBreak" -> {
+                MainHelper.setShortBreak(newValue)
+                viewModel.updateShortBreakDuration(newValue.toLong())
+
+                Log.d("Testing", "SA Short Time: $newValue")
+            }
+            "LongBreak" -> {
+                MainHelper.setLongBreak(newValue)
+                viewModel.updateLongBreakDuration(newValue.toLong())
+
+                Log.d("Testing", "SA Long Time: $newValue")
+            }
+        }
         setupTextViews()
     }
 

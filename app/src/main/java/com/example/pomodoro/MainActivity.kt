@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
 
-    val viewModel by viewModels<MainViewModel> {
+    private val viewModel by viewModels<MainViewModel> {
         MainViewModelFactory(applicationContext) // Pass the application context here
     }
-    val taskViewModel by viewModels<TaskViewModel>()
+
+    private val taskViewModel by viewModels<TaskViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +46,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         circleImageViews = listOf(binding.imageView, binding.imageView2, binding.imageView3, binding.imageView4)
 
-        viewModel.session.observe(this) {
-            binding.txtTimer.text = it.toString()
+        viewModel.session.observe(this) { newSession ->
+            binding.txtTimer.text = newSession.toString()
+            Log.d("Testing", "MA Session LiveData Updated: $newSession")
         }
 
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
