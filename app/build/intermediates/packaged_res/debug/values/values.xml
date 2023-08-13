@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="beige">#E8C6AA</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#2F3337</color>
     <color name="blue">#1E79AE</color>
     <color name="green">#82BF7A</color>
     <color name="navy_blue">#1A4895</color>
@@ -16,11 +16,16 @@
     <color name="purple">#A07DB7</color>
     <color name="red">#EE3A23</color>
     <color name="secondary">#57A773</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FBF8EF</color>
     <color name="yellow">#FACA2A</color>
     <string name="app_name">pomo:dolist</string>
+    <string name="btnAddTask">Add Task</string>
+    <string name="btnClearAllTask">Clear All</string>
+    <string name="btnPause">Pause</string>
+    <string name="btnPlay">Play</string>
+    <string name="btnStop">Stop</string>
     <style name="Actionbar.dark" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="background">@color/secondary</item>
+        <item name="background">@color/primary</item>
         <item name="titleTextStyle">@style/Actionbar.darktext</item>
         <item name="android:textColor">@color/white</item>
     </style>
@@ -29,7 +34,7 @@
     </style>
     <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
         
-        <item name="android:statusBarColor">@color/secondary</item>
+        <item name="android:statusBarColor">@color/primary</item>
         <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
         <item name="actionBarStyle">@style/Actionbar.dark</item>
         <item name="displayOptions">showHome|useLogo|showTitle</item>
@@ -37,5 +42,32 @@
     <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">@color/white</item>
+    </style>
+    <style name="btnClear">
+        <item name="android:layout_height">38dp</item>
+        <item name="android:layout_width">100dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint"> @color/secondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">22dp</item>
+        <item name="android:padding">0dp</item>
+    </style>
+    <style name="btnTask">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">262dp</item>
+        <item name="android:width">180dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint"> @color/secondary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">14dp</item>
+    </style>
+    <style name="btnTimer">
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:backgroundTint"> @color/secondary</item>
+        <item name="android:layout_width">88dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="textAllCaps">true</item>
     </style>
 </resources>

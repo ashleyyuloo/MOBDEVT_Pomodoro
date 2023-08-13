@@ -3261,6 +3261,11 @@ int string app_name 0x7f10001c
 int string appbar_scrolling_view_behavior 0x7f10001d
 int string bottom_sheet_behavior 0x7f10001e
 int string bottomsheet_action_expand_halfway 0x7f10001f
+int string btnAddTask 0x7f100085
+int string btnClearAllTask 0x7f100084
+int string btnPause 0x7f100086
+int string btnPlay 0x7f100087
+int string btnStop 0x7f100088
 int string character_counter_content_description 0x7f100020
 int string character_counter_overflowed_content_description 0x7f100021
 int string character_counter_pattern 0x7f100022
@@ -4384,6 +4389,9 @@ int style Widget_MaterialComponents_Toolbar_PrimarySurface 0x7f1103f8
 int style Widget_MaterialComponents_Toolbar_Surface 0x7f1103f9
 int style Widget_MaterialComponents_Tooltip 0x7f1103fa
 int style Widget_Support_CoordinatorLayout 0x7f1103fb
+int style btnClear 0x7f110401
+int style btnTask 0x7f110400
+int style btnTimer 0x7f1103ff
 int[] styleable ActionBar { 0x7f030040, 0x7f030047, 0x7f030048, 0x7f030109, 0x7f03010a, 0x7f03010b, 0x7f03010c, 0x7f03010d, 0x7f03010e, 0x7f030134, 0x7f030145, 0x7f030146, 0x7f030165, 0x7f0301cd, 0x7f0301d4, 0x7f0301da, 0x7f0301db, 0x7f0301df, 0x7f0301f0, 0x7f030205, 0x7f03027e, 0x7f0302df, 0x7f03030f, 0x7f030316, 0x7f030317, 0x7f030379, 0x7f03037d, 0x7f0303fb, 0x7f030408 }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1
