@@ -21,7 +21,6 @@ id btnDeleteTask
 id btnIncrease
 id btnPause
 id btnPlay
-id btnSave
 id btnStop
 id checkboxCompleted
 id etTimeInput
@@ -38,7 +37,6 @@ id txtLongTitle
 id txtShortMin
 id txtShortTitle
 id txtTask
-id txtTester
 id txtTimer
 id txtWorkMin
 id txtWorkTitle

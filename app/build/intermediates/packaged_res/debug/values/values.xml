@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">pomo:dolist</string>
-    <style name="Base.Theme.Pomodoro" parent="Theme.AppCompat.DayNight">
+    <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
         
         
     </style>

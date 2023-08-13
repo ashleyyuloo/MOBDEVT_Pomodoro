@@ -43,10 +43,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         circleImageViews = listOf(binding.imageView, binding.imageView2, binding.imageView3, binding.imageView4)
 
-
         viewModel.session.observe(this) {
             binding.txtTimer.text = it.toString()
         }
+
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
             updateCircleIndicators(completedWorkSessions)
         }
@@ -65,8 +65,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnPause.setOnClickListener {
-                //viewModel.pauseTimer()
-                printTaskList()
+                viewModel.pauseTimer()
             }
 
             btnStop.setOnClickListener {
@@ -253,13 +252,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun printTaskList() {
-        val tasks = viewModel.listOfTasks.value
-        tasks?.forEach { task ->
-            Log.d("TaskList", "Task: ${task.name}, Completed: ${task.isCompleted}")
-        }
-    }
-
     private fun updateCircleIndicators(completedWorkSessions: Int) {
         for (i in 0 until circleImageViews.size) {
             if (i < completedWorkSessions) {
@@ -328,6 +320,5 @@ class MainActivity : AppCompatActivity() {
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
-
 
 }

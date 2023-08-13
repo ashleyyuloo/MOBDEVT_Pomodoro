@@ -2616,7 +2616,6 @@ id btnDeleteTask
 id btnIncrease
 id btnPause
 id btnPlay
-id btnSave
 id btnStop
 id buttonPanel
 id cache_measures
@@ -2986,7 +2985,6 @@ id txtLongTitle
 id txtShortMin
 id txtShortTitle
 id txtTask
-id txtTester
 id txtTimer
 id txtWorkMin
 id txtWorkTitle
