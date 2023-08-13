@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,31 +32,38 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private var isWorkSession = false
     var pausedTime: Long = 0
 
-    private val _workSessionDuration = MutableLiveData<Long>()
+    private val _workSessionDuration = MutableLiveData<Long>(MainHelper.getWorkSession())
     val workSessionDuration: LiveData<Long> = _workSessionDuration
 
-    private val _shortBreakDuration = MutableLiveData<Long>()
+    private val _shortBreakDuration = MutableLiveData<Long>(MainHelper.getShortBreak())
     val shortBreakDuration: LiveData<Long> = _shortBreakDuration
 
-    private val _longBreakDuration = MutableLiveData<Long>()
+    private val _longBreakDuration = MutableLiveData<Long>(MainHelper.getLongBreak())
     val longBreakDuration: LiveData<Long> = _longBreakDuration
-    fun updateDurations() {
-        _workSessionDuration.value = MainHelper.getWorkSession()
-        _shortBreakDuration.value = MainHelper.getShortBreak()
-        _longBreakDuration.value = MainHelper.getLongBreak()
+
+    fun updateWorkSessionDuration(newDuration: Long) {
+        _workSessionDuration.value = newDuration
+        Log.d("Testing", "MVM Work Time: ${_workSessionDuration.value}")
+    }
+
+    fun updateShortBreakDuration(newDuration: Long) {
+        _shortBreakDuration.value = newDuration
+        Log.d("Testing", "MVM Short Time: ${_shortBreakDuration.value}")
+    }
+
+    fun updateLongBreakDuration(newDuration: Long) {
+        _longBreakDuration.value = newDuration
+        Log.d("Testing", "MVM Long Time: ${_longBreakDuration.value}")
     }
 
     init {
-        _workSessionDuration.value = MainHelper.getWorkSession()
-        _shortBreakDuration.value = MainHelper.getShortBreak()
-        _longBreakDuration.value = MainHelper.getLongBreak()
         updateTimerDisplay(_workSessionDuration.value!!)
     }
 
     private fun playSound(){
         mediaPlayer = MediaPlayer.create(applicationContext, R.raw.triangle_open)
         mediaPlayer!!.setOnCompletionListener {
-            it.release() // Release the MediaPlayer resource after the sound is played
+            it.release()
         }
         mediaPlayer!!.start()
     }
@@ -125,8 +133,10 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     }
 
     private fun updateTimerDisplay(millis: Long) {
-        _session.value = formatTime(millis)
+        val formattedTime = formatTime(millis)
+        _session.value = formattedTime
     }
+
 
     private fun formatTime(millis: Long): String {
         val minutes = (millis / 60000) % 60
