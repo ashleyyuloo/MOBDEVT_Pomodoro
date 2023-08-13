@@ -28,11 +28,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.Pomodoro" >
         <activity
-            android:name="com.example.pomodoro.Item_Task"
-            android:exported="false" />
-        <activity
             android:name="com.example.pomodoro.SettingsActivity"
-            android:exported="false"
             android:parentActivityName="com.example.pomodoro.MainActivity" />
         <activity
             android:name="com.example.pomodoro.MainActivity"

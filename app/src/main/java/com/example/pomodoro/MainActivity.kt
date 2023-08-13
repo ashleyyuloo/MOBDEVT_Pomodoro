@@ -1,6 +1,7 @@
 
 package com.example.pomodoro
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
@@ -85,6 +86,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var editingTaskIndex: Int = -1
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupTaskViews(tasks: List<MainViewModel.Task>) {
         binding.taskList.removeAllViews()
 
@@ -114,23 +116,21 @@ class MainActivity : AppCompatActivity() {
                     }
                     MotionEvent.ACTION_UP -> {
                         val clickedTaskIndex = taskView.tag as Int
-                        val clickedTask = tasks[clickedTaskIndex]
 
                         if (editingTaskIndex != clickedTaskIndex) {
                             // If a different task is being edited, save the previous one (if any)
                             editingTaskIndex.takeIf { it != -1 }?.let { previousTaskIndex ->
                                 val previousTask = tasks[previousTaskIndex]
                                 previousTask.name = taskViewBinding.txtTask.text.toString()
-                                Log.d("EditTextClick", "Edited task: ${previousTask.name}")
-                                // Update the UI for the previously edited task if needed
                             }
 
                             // Start editing the clicked task
                             editingTaskIndex = clickedTaskIndex
                             taskViewBinding.txtTask.isEnabled = true
                             taskViewBinding.txtTask.requestFocus()
-                            Log.d("EditTextClick", "Editing task: ${clickedTask.name}")
                         }
+
+                        binding.btnAddTasks.isEnabled = false
 
                         false // Allow default touch behavior
                     }

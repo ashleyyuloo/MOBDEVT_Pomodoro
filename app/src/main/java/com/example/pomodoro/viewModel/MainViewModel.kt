@@ -17,36 +17,6 @@ import kotlinx.coroutines.launch
 
 //gets the application context from the MainActivity
 class MainViewModel(private val applicationContext: Context) : ViewModel() {
-    data class Task(var name: String, val isCompleted: Boolean = false)
-
-    val listOfTasks: MutableLiveData<MutableList<Task>> = MutableLiveData(mutableListOf())
-
-    fun addTask(task: Task) {
-        val updatedList = listOfTasks.value ?: mutableListOf()
-        updatedList.add(task)
-        listOfTasks.value = updatedList
-    }
-
-    fun updateTask(task: Task) {
-        val updatedList = listOfTasks.value ?: mutableListOf()
-        val existingTaskIndex = updatedList.indexOfFirst { it.name == task.name }
-        if (existingTaskIndex >= 0) {
-            updatedList[existingTaskIndex] = task
-            listOfTasks.value = updatedList
-        }
-    }
-
-    fun removeTask(task: Task) {
-        val updatedList = listOfTasks.value ?: mutableListOf()
-        updatedList.remove(task)
-        listOfTasks.value = updatedList
-    }
-
-    fun clearTasks() {
-        listOfTasks.value?.clear()
-    }
-
-
     private lateinit var mediaPlayer: MediaPlayer
 
     private val _session = MutableLiveData<String>()
@@ -63,6 +33,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private var remainingTime: Long = 0
     private var isWorkSession = false
     var pausedTime: Long = 0
+
 
     init {
         updateTimerDisplay(_workSession)
@@ -148,8 +119,46 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     }
 
     private fun formatTime(millis: Long): String {
-        val minutes = millis / 60000
+        val minutes = (millis / 60000) % 60
         val seconds = (millis % 60000) / 1000
-        return String.format("%02d:%02d", minutes, seconds)
+        return if (millis < 3600000) {
+            String.format("%02d:%02d", minutes, seconds)
+        } else {
+            val hours = millis / 3600000
+            String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        }
     }
+
+
+
+    data class Task(var name: String, val isCompleted: Boolean = false)
+
+    val listOfTasks: MutableLiveData<MutableList<Task>> = MutableLiveData(mutableListOf())
+
+    fun addTask(task: Task) {
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        updatedList.add(task)
+        listOfTasks.value = updatedList
+    }
+
+    fun updateTask(task: Task) {
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        val existingTaskIndex = updatedList.indexOfFirst { it.name == task.name }
+        if (existingTaskIndex >= 0) {
+            updatedList[existingTaskIndex] = task
+            listOfTasks.value = updatedList
+        }
+    }
+
+    fun removeTask(task: Task) {
+        val updatedList = listOfTasks.value ?: mutableListOf()
+        updatedList.remove(task)
+        listOfTasks.value = updatedList
+    }
+
+    fun clearTasks() {
+        listOfTasks.value?.clear()
+    }
+
+
 }

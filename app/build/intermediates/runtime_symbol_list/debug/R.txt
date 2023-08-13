@@ -2431,6 +2431,8 @@ int drawable abc_textfield_search_material 0x7f070054
 int drawable abc_vector_test 0x7f070055
 int drawable avd_hide_password 0x7f070056
 int drawable avd_show_password 0x7f070057
+int drawable baseline_add_24 0x7f0700a2
+int drawable baseline_remove_24 0x7f0700a3
 int drawable btn_checkbox_checked_mtrl 0x7f070058
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f070059
 int drawable btn_checkbox_unchecked_mtrl 0x7f07005a
@@ -2500,6 +2502,7 @@ int drawable notification_template_icon_bg 0x7f070099
 int drawable notification_template_icon_low_bg 0x7f07009a
 int drawable notification_tile_bg 0x7f07009b
 int drawable notify_panel_notification_icon_bg 0x7f07009c
+int drawable outline_bg 0x7f0700a1
 int drawable test_custom_background 0x7f07009d
 int drawable test_level_drawable 0x7f07009e
 int drawable tooltip_frame_dark 0x7f07009f
@@ -2509,6 +2512,7 @@ int id BOTTOM_END 0x7f080001
 int id BOTTOM_START 0x7f080002
 int id CTRL 0x7f080003
 int id FUNCTION 0x7f080004
+int id LongBreakLayout 0x7f0801ec
 int id META 0x7f080005
 int id NO_DEBUG 0x7f080006
 int id SHIFT 0x7f080007
@@ -2516,8 +2520,10 @@ int id SHOW_ALL 0x7f080008
 int id SHOW_PATH 0x7f080009
 int id SHOW_PROGRESS 0x7f08000a
 int id SYM 0x7f08000b
+int id ShortBreakLayout 0x7f0801ed
 int id TOP_END 0x7f08000c
 int id TOP_START 0x7f08000d
+int id WorkSessionLayout 0x7f0801ee
 int id accelerate 0x7f08000e
 int id accessibility_action_clickable_span 0x7f08000f
 int id accessibility_custom_action_0 0x7f080010
@@ -2604,11 +2610,13 @@ int id bounceEnd 0x7f080060
 int id bounceStart 0x7f080061
 int id btnAddTasks 0x7f080062
 int id btnClearTasks 0x7f080063
+int id btnDecrease 0x7f0801f9
 int id btnDeleteTask 0x7f080064
+int id btnIncrease 0x7f0801fa
 int id btnPause 0x7f080065
 int id btnPlay 0x7f080066
+int id btnSave 0x7f0801fb
 int id btnStop 0x7f080067
-int id button 0x7f080068
 int id buttonPanel 0x7f080069
 int id cache_measures 0x7f08006a
 int id callMeasure 0x7f08006b
@@ -2690,6 +2698,7 @@ int id end 0x7f0800b6
 int id endToStart 0x7f0800b7
 int id enterAlways 0x7f0800b8
 int id enterAlwaysCollapsed 0x7f0800b9
+int id etTimeInput 0x7f0801fc
 int id exitUntilCollapsed 0x7f0800ba
 int id expand_activities_button 0x7f0800bb
 int id expanded_menu 0x7f0800bc
@@ -2944,7 +2953,6 @@ int id textSpacerNoButtons 0x7f0801b4
 int id textSpacerNoTitle 0x7f0801b5
 int id textStart 0x7f0801b6
 int id textTop 0x7f0801b7
-int id textView 0x7f0801b8
 int id text_input_end_icon 0x7f0801b9
 int id text_input_error_icon 0x7f0801ba
 int id text_input_start_icon 0x7f0801bb
@@ -2971,8 +2979,16 @@ int id transition_position 0x7f0801cf
 int id transition_scene_layoutid_cache 0x7f0801d0
 int id transition_transform 0x7f0801d1
 int id triangle 0x7f0801d2
+int id tvTimeCat 0x7f0801fd
+int id txtLongMin 0x7f0801ef
+int id txtLongTitle 0x7f0801f0
+int id txtShortMin 0x7f0801f1
+int id txtShortTitle 0x7f0801f2
 int id txtTask 0x7f0801d3
+int id txtTester 0x7f0801f8
 int id txtTimer 0x7f0801d4
+int id txtWorkMin 0x7f0801f3
+int id txtWorkTitle 0x7f0801f4
 int id unchecked 0x7f0801d5
 int id uniform 0x7f0801d6
 int id unlabeled 0x7f0801d7
@@ -3099,6 +3115,7 @@ int layout design_navigation_menu 0x7f0b002a
 int layout design_navigation_menu_item 0x7f0b002b
 int layout design_text_input_end_icon 0x7f0b002c
 int layout design_text_input_start_icon 0x7f0b002d
+int layout edit_session 0x7f0b0076
 int layout item_task 0x7f0b002e
 int layout m3_alert_dialog 0x7f0b002f
 int layout m3_alert_dialog_actions 0x7f0b0030

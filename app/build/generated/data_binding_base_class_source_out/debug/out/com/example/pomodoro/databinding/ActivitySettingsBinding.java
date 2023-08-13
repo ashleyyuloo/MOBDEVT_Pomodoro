@@ -4,7 +4,7 @@ package com.example.pomodoro.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,16 +21,48 @@ public final class ActivitySettingsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button button;
+  public final LinearLayout LongBreakLayout;
 
   @NonNull
-  public final TextView textView;
+  public final LinearLayout ShortBreakLayout;
 
-  private ActivitySettingsBinding(@NonNull ConstraintLayout rootView, @NonNull Button button,
-      @NonNull TextView textView) {
+  @NonNull
+  public final LinearLayout WorkSessionLayout;
+
+  @NonNull
+  public final TextView txtLongMin;
+
+  @NonNull
+  public final TextView txtLongTitle;
+
+  @NonNull
+  public final TextView txtShortMin;
+
+  @NonNull
+  public final TextView txtShortTitle;
+
+  @NonNull
+  public final TextView txtWorkMin;
+
+  @NonNull
+  public final TextView txtWorkTitle;
+
+  private ActivitySettingsBinding(@NonNull ConstraintLayout rootView,
+      @NonNull LinearLayout LongBreakLayout, @NonNull LinearLayout ShortBreakLayout,
+      @NonNull LinearLayout WorkSessionLayout, @NonNull TextView txtLongMin,
+      @NonNull TextView txtLongTitle, @NonNull TextView txtShortMin,
+      @NonNull TextView txtShortTitle, @NonNull TextView txtWorkMin,
+      @NonNull TextView txtWorkTitle) {
     this.rootView = rootView;
-    this.button = button;
-    this.textView = textView;
+    this.LongBreakLayout = LongBreakLayout;
+    this.ShortBreakLayout = ShortBreakLayout;
+    this.WorkSessionLayout = WorkSessionLayout;
+    this.txtLongMin = txtLongMin;
+    this.txtLongTitle = txtLongTitle;
+    this.txtShortMin = txtShortMin;
+    this.txtShortTitle = txtShortTitle;
+    this.txtWorkMin = txtWorkMin;
+    this.txtWorkTitle = txtWorkTitle;
   }
 
   @Override
@@ -60,19 +92,63 @@ public final class ActivitySettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.button;
-      Button button = ViewBindings.findChildViewById(rootView, id);
-      if (button == null) {
+      id = R.id.LongBreakLayout;
+      LinearLayout LongBreakLayout = ViewBindings.findChildViewById(rootView, id);
+      if (LongBreakLayout == null) {
         break missingId;
       }
 
-      id = R.id.textView;
-      TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
+      id = R.id.ShortBreakLayout;
+      LinearLayout ShortBreakLayout = ViewBindings.findChildViewById(rootView, id);
+      if (ShortBreakLayout == null) {
         break missingId;
       }
 
-      return new ActivitySettingsBinding((ConstraintLayout) rootView, button, textView);
+      id = R.id.WorkSessionLayout;
+      LinearLayout WorkSessionLayout = ViewBindings.findChildViewById(rootView, id);
+      if (WorkSessionLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.txtLongMin;
+      TextView txtLongMin = ViewBindings.findChildViewById(rootView, id);
+      if (txtLongMin == null) {
+        break missingId;
+      }
+
+      id = R.id.txtLongTitle;
+      TextView txtLongTitle = ViewBindings.findChildViewById(rootView, id);
+      if (txtLongTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.txtShortMin;
+      TextView txtShortMin = ViewBindings.findChildViewById(rootView, id);
+      if (txtShortMin == null) {
+        break missingId;
+      }
+
+      id = R.id.txtShortTitle;
+      TextView txtShortTitle = ViewBindings.findChildViewById(rootView, id);
+      if (txtShortTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.txtWorkMin;
+      TextView txtWorkMin = ViewBindings.findChildViewById(rootView, id);
+      if (txtWorkMin == null) {
+        break missingId;
+      }
+
+      id = R.id.txtWorkTitle;
+      TextView txtWorkTitle = ViewBindings.findChildViewById(rootView, id);
+      if (txtWorkTitle == null) {
+        break missingId;
+      }
+
+      return new ActivitySettingsBinding((ConstraintLayout) rootView, LongBreakLayout,
+          ShortBreakLayout, WorkSessionLayout, txtLongMin, txtLongTitle, txtShortMin, txtShortTitle,
+          txtWorkMin, txtWorkTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
