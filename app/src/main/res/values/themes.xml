@@ -9,8 +9,14 @@
     </style>
 
     <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
+
     <style name="ActivityBG">
         <item name="android:background">@color/primaryVariant</item>
+    </style>
+
+    <style name="EditSessionBG">
+        <item name="android:background">@color/white</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="Actionbar.dark" parent="Widget.AppCompat.Toolbar.Button.Navigation">
@@ -77,6 +83,24 @@
         <item name="iconSize">26dp</item>
     </style>
 
+    <style name="taskList">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:focusable">true</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:hint">@string/hintTask</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/hint</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="DeleteBtn">
         <item name="android:backgroundTint">@color/white</item>
         <item name="iconTint">@color/primaryVariant</item>
@@ -122,6 +146,26 @@
         <item name="android:textStyle">italic</item>
     </style>
 
+    <style name="txtEditTitleSetting">
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+    <style name="txtEditTimer">
+        <item name="android:layout_height">120dp</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:background">@null</item>
+        <item name="android:fontFamily">@font/rubik_mono_one</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
     <style name="btnEditTimer">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
@@ -129,6 +173,12 @@
         <item name="android:buttonCornerRadius">100dp</item>
         <item name="android:backgroundTint">@color/primaryVariant</item>
         <item name="android:iconTint">@color/white</item>
+
+    </style>
+
+    <style name="checkbox" parent="Theme.AppCompat.Light">
+    <item name="colorControlNormal">@color/white</item>
+    <item name="colorControlActivated">@color/white</item>
     </style>
 
 <!--    Landscape-->

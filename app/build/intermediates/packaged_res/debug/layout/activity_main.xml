@@ -104,11 +104,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:fontFamily="@font/belgrano"
-                    android:text="dolist:tasks"
-                    android:textAllCaps="false"
+                    style="@style/txtTask"
+                    android:text="@string/txtTasks"
                     android:textColor="@color/dmSecondary"
-                    android:textSize="18sp"
                     android:textStyle="bold|italic" />
 
                 <Button

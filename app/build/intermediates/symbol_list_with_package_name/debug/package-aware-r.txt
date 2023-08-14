@@ -3668,6 +3668,7 @@ style CardView
 style CardView_Dark
 style CardView_Light
 style DeleteBtn
+style EditSessionBG
 style EmptyTheme
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Body_Text
@@ -4416,10 +4417,14 @@ style btnClear
 style btnEditTimer
 style btnTask
 style btnTimer
+style checkbox
 style lndBtnTimer
 style lndTxtTimer
+style taskList
 style timerSetting
 style txtColorTitleSetting
+style txtEditTimer
+style txtEditTitleSetting
 style txtSetting
 style txtTask
 style txtTimer

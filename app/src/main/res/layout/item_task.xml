@@ -8,31 +8,18 @@
 
     <CheckBox
         android:id="@+id/checkboxCompleted"
+        android:theme="@style/checkbox"
         android:layout_width="wrap_content"
-        android:layout_height="22dp"
+        android:layout_height="24dp"
         android:layout_weight="0"
         android:minWidth="0dp"
         android:minHeight="0dp" />
 
     <EditText
         android:id="@+id/txtTask"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignTop="@id/checkboxCompleted"
         android:layout_toEndOf="@id/checkboxCompleted"
-        android:layout_weight="1"
-        android:background="@null"
-        android:backgroundTint="@color/white"
-        android:ellipsize="end"
-        android:focusable="true"
-        android:fontFamily="@font/belgrano"
-        android:hint="@string/hintTask"
-        android:imeOptions="actionDone"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textColor="@color/white"
-        android:textColorHint="@color/hint"
-        android:textSize="18sp" />
+        style="@style/taskList" />
 
     <Button
         android:id="@+id/btnDeleteTask"

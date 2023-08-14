@@ -4,20 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:textAlignment="center">
+    style="@style/EditSessionBG"
+    >
 
     <EditText
         android:id="@+id/etTimeInput"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@null"
-        android:ems="10"
-        android:fontFamily="@font/rubik_mono_one"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textColor="@color/primary"
-        android:textSize="48sp"
+        style="@style/txtEditTimer"
         app:layout_constraintBottom_toBottomOf="@+id/btnDecrease"
         app:layout_constraintEnd_toStartOf="@+id/btnIncrease"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,13 +48,8 @@
 
     <TextView
         android:id="@+id/tvTimeCat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/belgrano"
-        android:text="@string/workSessionTitle"
-        android:textColor="@color/secondary"
-        android:textSize="26sp"
+        style="@style/txtEditTitleSetting"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

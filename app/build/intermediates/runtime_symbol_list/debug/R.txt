@@ -3667,6 +3667,7 @@ int style CardView 0x7f130115
 int style CardView_Dark 0x7f130116
 int style CardView_Light 0x7f130117
 int style DeleteBtn 0x7f130118
+int style EditSessionBG 0x7f130411
 int style EmptyTheme 0x7f130119
 int style MaterialAlertDialog_Material3 0x7f13011a
 int style MaterialAlertDialog_Material3_Body_Text 0x7f13011b
@@ -4415,10 +4416,14 @@ int style btnClear 0x7f130401
 int style btnEditTimer 0x7f130409
 int style btnTask 0x7f130402
 int style btnTimer 0x7f130403
+int style checkbox 0x7f13040d
 int style lndBtnTimer 0x7f13040a
 int style lndTxtTimer 0x7f13040b
+int style taskList 0x7f13040e
 int style timerSetting 0x7f130405
 int style txtColorTitleSetting 0x7f130406
+int style txtEditTimer 0x7f130410
+int style txtEditTitleSetting 0x7f13040f
 int style txtSetting 0x7f130407
 int style txtTask 0x7f13040c
 int style txtTimer 0x7f130404

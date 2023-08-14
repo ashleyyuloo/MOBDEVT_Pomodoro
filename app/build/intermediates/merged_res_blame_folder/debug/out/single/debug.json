@@ -36,6 +36,10 @@
         "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\font\\belgrano.ttf"
     },
     {
+        "merged": "com.example.pomodoro.app-merged_res-35:/layout_edit_session.xml.flat",
+        "source": "com.example.pomodoro.app-main-37:/layout/edit_session.xml"
+    },
+    {
         "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\xml\\data_extraction_rules.xml"
     },
@@ -62,10 +66,6 @@
     {
         "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable-v24\\ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout-land_activity_main.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout-land/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_outline_bg.xml.flat",
