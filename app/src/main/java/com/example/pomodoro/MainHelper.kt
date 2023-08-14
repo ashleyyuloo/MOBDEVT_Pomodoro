@@ -10,35 +10,32 @@ class MainHelper {
 
         fun getWorkSession(): Long {
             val workSessionInMillis = convertToMillis(workSession)
-            Log.d("MainHelper", "getWorkSession: $workSessionInMillis")
             return workSessionInMillis
         }
 
         fun setWorkSession(minutes: Int) {
             workSession = minutes
-            Log.d("MainHelper", "setWorkSession: $workSession")
+            Log.d("Testing Main Helper", "setWorkSession: $workSession")
         }
 
         fun getShortBreak(): Long {
             val shortBreakInMillis = convertToMillis(shortBreak)
-            Log.d("MainHelper", "getShortBreak: $shortBreakInMillis")
             return shortBreakInMillis
         }
 
         fun setShortBreak(minutes: Int) {
             shortBreak = minutes
-            Log.d("TestingMainHelper", "setShortBreak: $shortBreak")
+           //Log.d("Testing Main Helper", "setShortBreak: $shortBreak")
         }
 
         fun getLongBreak(): Long {
             val longBreakInMillis = convertToMillis(longBreak)
-            Log.d("TestingMainHelper", "getLongBreak: $longBreakInMillis")
             return longBreakInMillis
         }
 
         fun setLongBreak(minutes: Int) {
             longBreak = minutes
-            Log.d("TestingMainHelper", "setLongBreak: $longBreak")
+            //Log.d("Testing Main Helper", "setLongBreak: $longBreak")
         }
 
         private fun convertToMillis(minutes: Int): Long {

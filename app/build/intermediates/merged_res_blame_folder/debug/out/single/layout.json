@@ -1,22 +1,18 @@
 [
     {
-        "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-mergeDebugResources-34:\\layout\\edit_session.xml",
-        "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\edit_session.xml"
+        "merged": "com.example.pomodoro.app-mergeDebugResources-34:/layout/activity_main.xml",
+        "source": "com.example.pomodoro.app-main-37:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-mergeDebugResources-34:\\layout\\item_task.xml",
-        "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\item_task.xml"
+        "merged": "com.example.pomodoro.app-mergeDebugResources-34:/layout/item_task.xml",
+        "source": "com.example.pomodoro.app-main-37:/layout/item_task.xml"
     },
     {
-        "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-mergeDebugResources-34:\\layout\\activity_settings.xml",
-        "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\activity_settings.xml"
+        "merged": "com.example.pomodoro.app-mergeDebugResources-34:/layout/activity_settings.xml",
+        "source": "com.example.pomodoro.app-main-37:/layout/activity_settings.xml"
     },
     {
         "merged": "com.example.pomodoro.app-mergeDebugResources-34:/layout/edit_session.xml",
         "source": "com.example.pomodoro.app-main-37:/layout/edit_session.xml"
-    },
-    {
-        "merged": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-mergeDebugResources-34:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\ADMIN\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\activity_main.xml"
     }
 ]

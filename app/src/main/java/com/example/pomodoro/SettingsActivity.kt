@@ -45,18 +45,14 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupColorButtons() {
-        val blackButtons = arrayOf(
-            binding.btnColor1, binding.btnColor3, binding.btnColor4, binding.btnColor5,
+        val whiteButtons = arrayOf(
+            binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
+            binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
             binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
             binding.btnColor13, binding.btnColor14
         )
-        val whiteButtons = arrayOf(
-            binding.btnColor2, binding.btnColor7, binding.btnColor9,
-            binding.btnColor12, binding.btnColor15, binding.btnColor16
-        )
 
-        val allButtons = blackButtons + whiteButtons
-        for (button in allButtons) {
+        for (button in whiteButtons) {
             colorButtonsMap[button] = false
             button.setOnClickListener {
                 handleColorButtonClick(button)
@@ -64,8 +60,6 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-
-    //for the themes
     private fun handleColorButtonClick(button: Button) {
         colorButtonsMap.forEach { (btn, isSelected) ->
             if (isSelected) {
@@ -78,21 +72,23 @@ class SettingsActivity : AppCompatActivity() {
         val currentState = colorButtonsMap[button] ?: false
         button.tag = !currentState
 
-        if (!currentState) {
-            val checkBoxDrawable = if (button in arrayOf(
-                    binding.btnColor1, binding.btnColor3, binding.btnColor4,
-                    binding.btnColor5, binding.btnColor6, binding.btnColor8,
-                    binding.btnColor10, binding.btnColor11, binding.btnColor13, binding.btnColor14
-                )
-            ) {
-                R.drawable.baseline_check_box_24
-            } else {
-                R.drawable.white_check_box_24
-            }
-            button.setCompoundDrawablesRelativeWithIntrinsicBounds(checkBoxDrawable, 0, 0, 0)
-            colorButtonsMap[button] = true
+        val checkBoxDrawable = if (button == binding.btnColor1) {
+            R.drawable.baseline_check_box_24
+        } else if (button in arrayOf(
+                binding.btnColor2, binding.btnColor7, binding.btnColor9,
+                binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
+                binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
+                binding.btnColor13, binding.btnColor14
+            )) {
+            R.drawable.white_check_box_24
+        }else{
+            null
         }
+
+        button.setCompoundDrawablesRelativeWithIntrinsicBounds(checkBoxDrawable!!, 0, 0, 0)
+        colorButtonsMap[button] = true
     }
+
 
     private fun setupTextViews() {
         binding.txtWorkMin.text = convertMillisecondsToMinutes(MainHelper.getWorkSession()).toString()
@@ -166,22 +162,21 @@ class SettingsActivity : AppCompatActivity() {
     private fun updateMainHelperAndTextViews(category: String, newValue: Int) {
         when (category) {
             "WorkSession" -> {
-                MainHelper.setWorkSession(newValue)
                 viewModel.updateWorkSessionDuration(newValue.toLong())
 
-                Log.d("Testing", "SA Work Time: $newValue")
+                Log.d("Testing Settings", "SA Work Time: $newValue")
             }
             "ShortBreak" -> {
                 MainHelper.setShortBreak(newValue)
                 viewModel.updateShortBreakDuration(newValue.toLong())
 
-                Log.d("Testing", "SA Short Time: $newValue")
+                Log.d("Testing Settings", "SA Short Time: $newValue")
             }
             "LongBreak" -> {
                 MainHelper.setLongBreak(newValue)
                 viewModel.updateLongBreakDuration(newValue.toLong())
 
-                Log.d("Testing", "SA Long Time: $newValue")
+                Log.d("Testing Settings", "SA Long Time: $newValue")
             }
         }
         setupTextViews()

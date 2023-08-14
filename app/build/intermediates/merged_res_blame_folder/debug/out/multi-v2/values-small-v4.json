@@ -4,7 +4,7 @@
             "outputFile": "com.example.pomodoro.app-mergeDebugResources-33:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ADMIN\\.gradle\\caches\\transforms-3\\5a5c5e5c7026544de9ccf8875773e4ef\\transformed\\material-1.5.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\PC\\.gradle\\caches\\transforms-3\\5a5c5e5c7026544de9ccf8875773e4ef\\transformed\\material-1.5.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

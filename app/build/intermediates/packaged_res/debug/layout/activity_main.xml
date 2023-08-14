@@ -106,7 +106,6 @@
                     android:layout_weight="2"
                     style="@style/txtTask"
                     android:text="@string/txtTasks"
-                    android:textColor="@color/dmSecondary"
                     android:textStyle="bold|italic" />
 
                 <Button

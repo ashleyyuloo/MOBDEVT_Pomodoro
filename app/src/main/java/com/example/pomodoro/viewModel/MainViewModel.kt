@@ -43,17 +43,18 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
 
     fun updateWorkSessionDuration(newDuration: Long) {
         _workSessionDuration.value = newDuration
-        Log.d("Testing", "MVM Work Time: ${_workSessionDuration.value}")
+        MainHelper.setWorkSession(newDuration.toInt())
+        Log.d("Testing View Model", "MVM Work Time: ${_workSessionDuration.value}")
     }
 
     fun updateShortBreakDuration(newDuration: Long) {
         _shortBreakDuration.value = newDuration
-        Log.d("Testing", "MVM Short Time: ${_shortBreakDuration.value}")
+        //Log.d("Testing View Model", "MVM Short Time: ${_shortBreakDuration.value}")
     }
 
     fun updateLongBreakDuration(newDuration: Long) {
         _longBreakDuration.value = newDuration
-        Log.d("Testing", "MVM Long Time: ${_longBreakDuration.value}")
+        //Log.d("Testing View Model", "MVM Long Time: ${_longBreakDuration.value}")
     }
 
     init {
@@ -109,13 +110,13 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         if (isWorkSession) {
             _workSessionCounter.value = _workSessionCounter.value!! + 1
 
+            playSound()
             if (_workSessionCounter.value == 4) {
                 startLongBreak()
             } else {
                 startShortBreak()
             }
         } else {
-            playSound()
             startWorkSession()
             if (_workSessionCounter.value == 4) {
                 _workSessionCounter.value = 0

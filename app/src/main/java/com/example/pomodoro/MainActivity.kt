@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.session.observe(this) { newSession ->
             binding.txtTimer.text = newSession.toString()
-            Log.d("Testing", "MA Session LiveData Updated: $newSession")
+            Log.d("Testing Main Activity", "MA Session LiveData Updated: $newSession")
         }
 
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
@@ -57,22 +57,6 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.listOfTasks.observe(this) { tasks ->
             setupTaskViews(tasks)
         }
-
-        viewModel.workSessionDuration.observe(this) { newDuration ->
-            Log.d("TestingMainActivity", "Work Session Duration observed: $newDuration")
-            // Update UI or perform other actions...
-        }
-
-        viewModel.shortBreakDuration.observe(this) { newDuration ->
-            Log.d("TestingMainActivity", "Short Break Duration observed: $newDuration")
-            // Update UI or perform other actions...
-        }
-
-        viewModel.longBreakDuration.observe(this) { newDuration ->
-            Log.d("TestingMainActivity", "Long Break Duration observed: $newDuration")
-            // Update UI or perform other actions...
-        }
-
 
         with(binding){
             if (savedInstanceState != null) {
