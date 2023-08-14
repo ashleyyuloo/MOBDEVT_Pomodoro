@@ -3285,6 +3285,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string colorThemeTitle
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -3293,6 +3294,7 @@ string hide_bottom_view_on_scroll_behavior
 string hintTask
 string icon_content_description
 string item_view_role_description
+string lngBreakTitle
 string m3_ref_typeface_brand_display_regular
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -3380,8 +3382,11 @@ string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
 string search_menu_title
+string shrtBreakTitle
 string status_bar_notification_info_overflow
+string txtTasks
 string txtTimer
+string workSessionTitle
 style Actionbar_dark
 style Actionbar_darktext
 style ActivityBG
@@ -4408,9 +4413,17 @@ style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
 style btnClear
+style btnEditTimer
 style btnTask
 style btnTimer
+style lndBtnTimer
+style lndTxtTimer
+style timerSetting
+style txtColorTitleSetting
+style txtSetting
+style txtTask
 style txtTimer
+style txtTitleSetting
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth

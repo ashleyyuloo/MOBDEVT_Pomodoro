@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ActivityBG"
     tools:context=".MainActivity">
 
     <!-- Timer -->
@@ -15,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="00:00"
-        android:textSize="60sp"
+        android:text="@string/txtTimer"
+        style="@style/lndTxtTimer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -97,17 +98,20 @@
                 android:layout_marginBottom="16dp">
 
                 <TextView
+                    style="@style/txtTask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Tasks"
-                    android:textSize="24sp" />
+                    android:text="@string/txtTasks"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic" />
 
                 <Button
                     android:id="@+id/btnClearTasks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clear" />
+                    android:text="@string/btnClearAllTask"
+                    style="@style/btnClear"/>
             </TableRow>
 
             <ScrollView
@@ -131,10 +135,12 @@
 
                 <Button
                     android:id="@+id/btnAddTasks"
+                    style="@style/btnTask"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_horizontal|fill|fill_horizontal|center_vertical"
-                    android:text="Add Task" />
+                    android:text="@string/btnAddTask"
+                    app:icon="@drawable/baseline_add_24" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
@@ -154,28 +160,28 @@
 
         <Button
             android:id="@+id/btnPlay"
-            style="@style/Widget.AppCompat.Button"
+            style="@style/lndBtnTimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play"
+            android:text="@string/btnPlay"
             tools:layout_editor_absoluteX="73dp"
             tools:layout_editor_absoluteY="157dp" />
 
         <Button
             android:id="@+id/btnPause"
-            style="@style/Widget.AppCompat.Button"
+            style="@style/lndBtnTimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pause"
+            android:text="@string/btnPause"
             tools:layout_editor_absoluteX="73dp"
             tools:layout_editor_absoluteY="213dp" />
 
         <Button
             android:id="@+id/btnStop"
-            style="@style/Widget.AppCompat.Button"
+            style="@style/lndBtnTimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stop"
+            android:text="@string/btnStop"
             tools:layout_editor_absoluteX="73dp"
             tools:layout_editor_absoluteY="269dp" />
     </LinearLayout>

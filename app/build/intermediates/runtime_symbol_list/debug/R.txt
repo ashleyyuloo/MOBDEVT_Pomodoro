@@ -3284,6 +3284,7 @@ int string character_counter_overflowed_content_description 0x7f120026
 int string character_counter_pattern 0x7f120027
 int string chip_text 0x7f120028
 int string clear_text_end_icon_content_description 0x7f120029
+int string colorThemeTitle 0x7f12008b
 int string error_icon_content_description 0x7f12002a
 int string exposed_dropdown_menu_content_description 0x7f12002b
 int string fab_transformation_scrim_behavior 0x7f12002c
@@ -3292,6 +3293,7 @@ int string hide_bottom_view_on_scroll_behavior 0x7f12002e
 int string hintTask 0x7f12002f
 int string icon_content_description 0x7f120030
 int string item_view_role_description 0x7f120031
+int string lngBreakTitle 0x7f12008c
 int string m3_ref_typeface_brand_display_regular 0x7f120032
 int string m3_ref_typeface_brand_medium 0x7f120033
 int string m3_ref_typeface_brand_regular 0x7f120034
@@ -3379,8 +3381,11 @@ int string path_password_eye_mask_strike_through 0x7f120085
 int string path_password_eye_mask_visible 0x7f120086
 int string path_password_strike_through 0x7f120087
 int string search_menu_title 0x7f120088
+int string shrtBreakTitle 0x7f12008d
 int string status_bar_notification_info_overflow 0x7f120089
+int string txtTasks 0x7f12008f
 int string txtTimer 0x7f12008a
+int string workSessionTitle 0x7f12008e
 int style Actionbar_dark 0x7f130000
 int style Actionbar_darktext 0x7f130001
 int style ActivityBG 0x7f130002
@@ -4407,9 +4412,17 @@ int style Widget_MaterialComponents_Toolbar_Surface 0x7f1303fe
 int style Widget_MaterialComponents_Tooltip 0x7f1303ff
 int style Widget_Support_CoordinatorLayout 0x7f130400
 int style btnClear 0x7f130401
+int style btnEditTimer 0x7f130409
 int style btnTask 0x7f130402
 int style btnTimer 0x7f130403
+int style lndBtnTimer 0x7f13040a
+int style lndTxtTimer 0x7f13040b
+int style timerSetting 0x7f130405
+int style txtColorTitleSetting 0x7f130406
+int style txtSetting 0x7f130407
+int style txtTask 0x7f13040c
 int style txtTimer 0x7f130404
+int style txtTitleSetting 0x7f130408
 int[] styleable ActionBar { 0x7f040040, 0x7f040047, 0x7f040048, 0x7f040109, 0x7f04010a, 0x7f04010b, 0x7f04010c, 0x7f04010d, 0x7f04010e, 0x7f040134, 0x7f040145, 0x7f040146, 0x7f040165, 0x7f0401cd, 0x7f0401d4, 0x7f0401da, 0x7f0401db, 0x7f0401df, 0x7f0401f0, 0x7f040205, 0x7f04027e, 0x7f0402df, 0x7f04030f, 0x7f040316, 0x7f040317, 0x7f040379, 0x7f04037d, 0x7f0403fb, 0x7f040408 }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1

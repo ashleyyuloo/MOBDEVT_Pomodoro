@@ -11,4 +11,5 @@
     <string name="shrtBreakTitle">short break</string>
     <string name="lngBreakTitle">long break</string>
     <string name="colorThemeTitle">color:themes</string>
+    <string name="txtTasks">dolist:tasks</string>
 </resources>

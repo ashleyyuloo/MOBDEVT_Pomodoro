@@ -1640,6 +1640,7 @@
     <string name="character_counter_pattern" translatable="false">%1$d/%2$d</string>
     <string name="chip_text">Chip text</string>
     <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="colorThemeTitle">color:themes</string>
     <string name="error_icon_content_description">Error</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
@@ -1648,6 +1649,7 @@
     <string name="hintTask">new task</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
+    <string name="lngBreakTitle">long break</string>
     <string name="m3_ref_typeface_brand_display_regular" translatable="false">sans-serif</string>
     <string name="m3_ref_typeface_brand_medium" translatable="false">sans-serif-medium</string>
     <string name="m3_ref_typeface_brand_regular" translatable="false">sans-serif</string>
@@ -1735,8 +1737,11 @@
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="search_menu_title">Search</string>
+    <string name="shrtBreakTitle">short break</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="txtTasks">dolist:tasks</string>
     <string name="txtTimer">00:00</string>
+    <string name="workSessionTitle">work session</string>
     <style name="Actionbar.dark" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="background">@color/secondary</item>
         <item name="titleTextStyle">@style/Actionbar.darktext</item>
@@ -1746,6 +1751,7 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/belgrano</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:textSize">24sp</item>
     </style>
     <style name="ActivityBG">
         <item name="android:background">@color/primaryVariant</item>
@@ -7922,6 +7928,14 @@
         <item name="android:padding">0dp</item>
         <item name="android:fontFamily">@font/belgrano</item>
     </style>
+    <style name="btnEditTimer">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:buttonCornerRadius">100dp</item>
+        <item name="android:backgroundTint">@color/primaryVariant</item>
+        <item name="android:iconTint">@color/white</item>
+    </style>
     <style name="btnTask">
         <item name="android:layout_height">44dp</item>
         <item name="android:layout_width">262dp</item>
@@ -7932,6 +7946,7 @@
         <item name="cornerRadius">11dp</item>
         <item name="android:fontFamily">@font/belgrano</item>
         <item name="iconTint">@color/primaryVariant</item>
+        <item name="iconSize">26dp</item>
     </style>
     <style name="btnTimer">
         <item name="android:textColor">@color/primary</item>
@@ -7942,9 +7957,65 @@
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/belgrano</item>
     </style>
+    <style name="lndBtnTimer">
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">9dp</item>
+        <item name="android:backgroundTint"> @color/white</item>
+        <item name="android:layout_width">88dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+    </style>
+    <style name="lndTxtTimer">
+        <item name="android:fontFamily">@font/rubik_mono_one</item>
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="timerSetting">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:background">@drawable/outline_bg</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="txtColorTitleSetting">
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="txtSetting">
+        <item name="android:fontFamily">@font/rubik_mono_one</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="txtTask">
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
     <style name="txtTimer">
         <item name="android:fontFamily">@font/rubik_mono_one</item>
         <item name="android:textSize">60sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="txtTitleSetting">
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
     <declare-styleable name="ActionBar">
