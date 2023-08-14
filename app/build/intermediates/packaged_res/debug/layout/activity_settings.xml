@@ -111,7 +111,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -124,7 +124,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/black"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -137,7 +137,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/orange"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -149,7 +149,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pastel_yellow"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="#020202" />
@@ -169,7 +169,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pink"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -182,7 +182,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pastel_pink"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -195,7 +195,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/purple"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -207,7 +207,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pastel_blue"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -227,7 +227,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/green"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -240,7 +240,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/beige"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -253,7 +253,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pastel_red"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -265,7 +265,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/red"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -284,7 +284,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/yellow"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -297,7 +297,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/pastel_green"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/black" />
@@ -310,7 +310,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/blue"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
@@ -322,7 +322,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/navy_blue"
-                app:cornerRadius="0dp"
+                app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
                 app:iconTint="@color/white" />
