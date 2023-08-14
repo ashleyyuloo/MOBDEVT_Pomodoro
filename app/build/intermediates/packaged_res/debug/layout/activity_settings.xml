@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ActivityBG"
     tools:context=".SettingsActivity">
 
     <LinearLayout
@@ -151,7 +152,7 @@
                 app:cornerRadius="0dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
-                app:iconTint="@color/black" />
+                app:iconTint="@color/white" />
 
             <Button
                 android:id="@+id/btnColor2"
@@ -177,7 +178,7 @@
                 app:cornerRadius="0dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
-                app:iconTint="#020202" />
+                app:iconTint="@color/white" />
 
             <Button
                 android:id="@+id/btnColor4"

@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">pomo:dolist</string>
-    <string name="btnClearAllTask">Clear All</string>
-    <string name="btnAddTask">Add Task</string>
-    <string name="btnPause">Pause</string>
-    <string name="btnPlay">Play</string>
-    <string name="btnStop">Stop</string>
+    <string name="btnClearAllTask">clear all</string>
+    <string name="btnAddTask">add task</string>
+    <string name="btnPause">pause</string>
+    <string name="btnPlay">play</string>
+    <string name="btnStop">stop</string>
+    <string name="txtTimer">00:00</string>
+    <string name="hintTask">new task</string>
 </resources>

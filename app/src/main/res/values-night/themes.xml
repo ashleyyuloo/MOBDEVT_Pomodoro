@@ -1,7 +1,76 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Pomodoro" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
+        <!-- Customize your light theme here. -->
+        <item name="android:statusBarColor">@color/dmPrimaryVariant</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="actionBarStyle">@style/Actionbar.dark</item>
+        <item name="displayOptions">showHome|useLogo|showTitle</item>
     </style>
+
+    <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
+    <style name="ActivityBG">
+        <item name="android:background">@color/dmPrimary</item>
+    </style>
+
+    <style name="Actionbar.dark" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="background">@color/dmPrimaryVariant</item>
+        <item name="titleTextStyle">@style/Actionbar.darktext</item>
+        <item name="android:textColor">@color/dmSecondary</item>
+    </style>
+
+    <style name="Actionbar.darktext" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/dmSecondary</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">@color/dmSecondary</item>
+    </style>
+
+    <style name="btnTimer">
+        <item name="android:textColor">@color/dmPrimaryVariant</item>
+        <item name="cornerRadius">11dp</item>
+        <item name="android:backgroundTint"> @color/dmSecondary</item>
+        <item name="android:layout_width">88dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+    </style>
+
+    <style name="txtTimer">
+        <item name="android:fontFamily">@font/rubik_mono_one</item>
+        <item name="android:textSize">60sp</item>
+        <item name="android:textColor">@color/dmSecondary</item>
+    </style>
+
+    <style name="btnClear">
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_width">96dp</item>
+        <item name="android:textColor">@color/dmPrimaryVariant</item>
+        <item name="android:backgroundTint"> @color/dmSecondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">11dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+    </style>
+
+    <style name="btnTask">
+        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_width">262dp</item>
+        <item name="android:width">180dp</item>
+        <item name="android:textColor">@color/dmPrimaryVariant</item>
+        <item name="android:backgroundTint"> @color/dmSecondary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">11dp</item>
+        <item name="android:fontFamily">@font/belgrano</item>
+        <item name="iconTint">@color/dmPrimaryVariant</item>
+    </style>
+
+    <style name="DeleteBtn">
+        <item name="android:backgroundTint">@color/dmSecondary</item>
+        <item name="iconTint">@color/dmPrimaryVariant</item>
+    </style>
+
 </resources>

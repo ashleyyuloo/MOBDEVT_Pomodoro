@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ActivityBG"
     tools:context=".SettingsActivity">
 
     <LinearLayout
@@ -88,7 +89,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ShortBreakLayout"
-        app:layout_constraintTop_toTopOf="@+id/ShortBreakLayout">
+        app:layout_constraintTop_toTopOf="@+id/ShortBreakLayout"
+        >
 
         <TextView
             android:id="@+id/txtLongMin"
@@ -97,7 +99,9 @@
             android:text="15"
             android:textAlignment="center"
             android:textSize="48sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+            />
 
         <TextView
             android:id="@+id/txtLongTitle"
@@ -151,7 +155,7 @@
                 app:cornerRadius="0dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
-                app:iconTint="@color/black" />
+                app:iconTint="@color/white" />
 
             <Button
                 android:id="@+id/btnColor2"
@@ -177,7 +181,7 @@
                 app:cornerRadius="0dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
-                app:iconTint="#020202" />
+                app:iconTint="@color/white" />
 
             <Button
                 android:id="@+id/btnColor4"

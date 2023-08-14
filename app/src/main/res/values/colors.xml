@@ -21,9 +21,13 @@
     <color name="navy_blue">#1A4895</color>
 
     <color name="primary">#FE6448</color>
+    <color name="primaryVariant">#FF725C</color>
     <color name="secondary">#57A773</color>
+    <color name="hint">#F7F1DE</color>
 
-
-
+<!--Dark Mode-->
+    <color name="dmPrimary">#290400</color>
+    <color name="dmSecondary">#E4F1E8</color>
+    <color name="dmPrimaryVariant">#69140E</color>
 
 </resources>

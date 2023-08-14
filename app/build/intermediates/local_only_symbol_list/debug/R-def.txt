@@ -1,9 +1,17 @@
 R_DEF: Internal format may change without notice
 local
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
+array preloaded_fonts
 color beige
 color black
 color blue
+color dmPrimary
+color dmPrimaryVariant
+color dmSecondary
 color green
+color hint
 color navy_blue
 color orange
 color pastel_blue
@@ -13,6 +21,7 @@ color pastel_red
 color pastel_yellow
 color pink
 color primary
+color primaryVariant
 color purple
 color red
 color secondary
@@ -20,16 +29,20 @@ color white
 color yellow
 drawable baseline_add_24
 drawable baseline_check_box_24
+drawable baseline_check_box_outline_blank_24
+drawable baseline_delete_24
 drawable baseline_remove_24
 drawable button_selector
 drawable circle_filled
 drawable circle_outline
-drawable ic_delete
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_settings
 drawable outline_bg
+drawable tasks_checkbox
 drawable white_check_box_24
+font belgrano
+font rubik_mono_one
 id LongBreakLayout
 id ShortBreakLayout
 id WorkSessionLayout
@@ -92,13 +105,18 @@ string btnClearAllTask
 string btnPause
 string btnPlay
 string btnStop
+string hintTask
+string txtTimer
 style Actionbar.dark
 style Actionbar.darktext
+style ActivityBG
 style Base.Theme.Pomodoro
+style DeleteBtn
 style Theme.Pomodoro
 style Toolbar.Button.Navigation.Tinted
 style btnClear
 style btnTask
 style btnTimer
+style txtTimer
 xml backup_rules
 xml data_extraction_rules
