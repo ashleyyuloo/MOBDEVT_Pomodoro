@@ -120,9 +120,9 @@ class SettingsActivity : AppCompatActivity() {
 
     etTimeInput.setText(timeInMinutes.toString())
         dialogBinding.tvTimeCat.text = when (category) {
-            "WorkSession" -> "Work Session"
-            "ShortBreak" -> "Short Break"
-            "LongBreak" -> "Long Break"
+            "WorkSession" -> getString(R.string.workSessionTitle)
+            "ShortBreak" -> getString(R.string.shrtBreakTitle)
+            "LongBreak" -> getString(R.string.lngBreakTitle)
             else -> ""
         }
 
