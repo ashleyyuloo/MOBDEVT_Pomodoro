@@ -7,4 +7,8 @@
     <string name="btnStop">stop</string>
     <string name="txtTimer">00:00</string>
     <string name="hintTask">new task</string>
+    <string name="workSessionTitle">work session</string>
+    <string name="shrtBreakTitle">short break</string>
+    <string name="lngBreakTitle">long break</string>
+    <string name="colorThemeTitle">color:themes</string>
 </resources>
