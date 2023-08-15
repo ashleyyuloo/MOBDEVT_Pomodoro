@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
             updateCircleIndicators(completedWorkSessions)
         }
+
         taskViewModel.listOfTasks.observe(this) { tasks ->
             setupTaskViews(tasks)
         }
@@ -101,14 +102,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
-
-                val currentListOfTasks = taskViewModel.listOfTasks.value
-                Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
-
-                    /*
                 taskViewModel.clearTasks()
-                binding.taskList.removeAllViews()
-                */
             }
 
         }
@@ -191,7 +185,7 @@ class MainActivity : AppCompatActivity() {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val taskName = taskEditText.text.toString().trim()
                 if (taskName.isNotEmpty()) {
-                    val existingTask = taskViewModel.listOfTasks.value?.find { it.name == taskName }
+                    val existingTask = taskViewModel.listOfTasks.value?.find { it.name == taskName }?.name
 
                     if (existingTask != null) {
                         Snackbar.make(binding.root, "Task with the same name already exists", Snackbar.LENGTH_SHORT).show()
@@ -240,7 +234,7 @@ class MainActivity : AppCompatActivity() {
 
             val taskName = textView.text.toString().trim()
             val task = TaskViewModel.Task(taskName, isChecked)
-            taskViewModel.updateTask(task) // Update the task in the ViewModel
+            taskViewModel.updateTask(task)
         }
     }
 
@@ -251,7 +245,7 @@ class MainActivity : AppCompatActivity() {
             val taskId = taskView.tag as Int
             val task = taskViewModel.listOfTasks.value?.get(taskId)
             task?.let {
-                taskViewModel.removeTask(it) // Remove the task from the ViewModel
+                taskViewModel.removeTask(it)
             }
             binding.taskList.removeView(taskView)
         }

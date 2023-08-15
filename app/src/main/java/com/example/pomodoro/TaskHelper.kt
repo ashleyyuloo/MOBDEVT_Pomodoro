@@ -1,21 +1,34 @@
 package com.example.pomodoro
 
-data class Task(val name: String, val isCompleted: Boolean = false)
-class TaskHelper {
-    companion object{
-        private val taskList: MutableList<Task> = mutableListOf()
+import android.os.Bundle
+import com.example.pomodoro.viewModel.TaskViewModel
 
-        fun getTasks(): List<Task> {
+data class Task(val name: String, var isCompleted: Boolean = false)
+class TaskHelper {
+    companion object {
+        private val taskList: MutableList<TaskViewModel.Task> = mutableListOf()
+
+        fun getTasks(): List<TaskViewModel.Task> {
             return taskList.toList()
         }
 
-        fun setAddTask(task: Task){
+        fun setAddedTask(task: TaskViewModel.Task) {
             taskList.add(task)
         }
 
-        fun setUpdateTask(task: Task){
-            taskList.add(task)
+        fun setUpdatedTask(task: TaskViewModel.Task) {
+            val existingTask = taskList.find { it.name == task.name }
+            existingTask?.let {
+                it.isCompleted = task.isCompleted
+            }
         }
 
+        fun setRemovedTask(task: TaskViewModel.Task) {
+            taskList.remove(task)
+        }
+
+        fun setEmptyTask() {
+            taskList.clear()
+        }
     }
 }
