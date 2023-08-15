@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var circleImageViews: List<ImageView>
 
-    val viewModel by viewModels<MainViewModel> {
+    private val viewModel by viewModels<MainViewModel> {
         MainViewModelFactory(applicationContext)
     }
 
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.session.observe(this) { newSession ->
             binding.txtTimer.text = newSession.toString()
-            Log.d("Testing Main Activity", "MA Session LiveData Updated: $newSession")
         }
 
         viewModel.workSessionCounter.observe(this) { completedWorkSessions ->
@@ -71,7 +70,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnPlay.setOnClickListener {
-
                 btnPlay.visibility = View.GONE // Hide Play button
                 btnPause.visibility = View.VISIBLE // Show Pause button
                 btnStop.visibility = View.VISIBLE // Show Stop button
@@ -103,8 +101,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnClearTasks.setOnClickListener{
+
+                val currentListOfTasks = taskViewModel.listOfTasks.value
+                Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
+
+                    /*
                 taskViewModel.clearTasks()
                 binding.taskList.removeAllViews()
+                */
             }
 
         }
@@ -303,15 +307,20 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.toSettings){
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
+            viewModel.stopTimer()
+
+            val currentListOfTasks = taskViewModel.listOfTasks.value
+            Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
+
             return true
         }
         return super.onOptionsItemSelected(item)
     }
-
 
     // °˖✧✿✧˖° TO EXPLAIN °˖✧✿✧˖°
     class MainViewModelFactory(private val applicationContext: Context) : ViewModelProvider.Factory {
@@ -323,5 +332,4 @@ class MainActivity : AppCompatActivity() {
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
-
 }

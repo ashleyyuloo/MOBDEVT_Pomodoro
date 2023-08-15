@@ -1,9 +1,9 @@
-#Tue Aug 15 00:57:50 CST 2023
-base.0=D\:\\School\\MOBDEVT\\MOBDEVT_Pomodoro\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=D\:\\School\\MOBDEVT\\MOBDEVT_Pomodoro\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=D\:\\School\\MOBDEVT\\MOBDEVT_Pomodoro\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=D\:\\School\\MOBDEVT\\MOBDEVT_Pomodoro\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex
-base.4=D\:\\School\\MOBDEVT\\MOBDEVT_Pomodoro\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Tue Aug 15 11:04:35 PST 2023
+base.0=/Users/ashleyyulo/Documents/School/MOBDEVT/Pomodoro/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/ashleyyulo/Documents/School/MOBDEVT/Pomodoro/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/ashleyyulo/Documents/School/MOBDEVT/Pomodoro/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/Users/ashleyyulo/Documents/School/MOBDEVT/Pomodoro/app/build/intermediates/dex/debug/mergeProjectDexDebug/12/classes.dex
+base.4=/Users/ashleyyulo/Documents/School/MOBDEVT/Pomodoro/app/build/intermediates/dex/debug/mergeProjectDexDebug/6/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex

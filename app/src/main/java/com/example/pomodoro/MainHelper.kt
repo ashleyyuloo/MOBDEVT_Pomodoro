@@ -4,33 +4,28 @@ import android.util.Log
 
 class MainHelper {
     companion object {
-        private var workSession: Int = 2
-        private var shortBreak: Int = 1
-        private var longBreak: Int = 1
+        private var workSession: Int = 1
+        private var shortBreak: Int = 5
+        private var longBreak: Int = 15
 
         fun getWorkSession(): Long {
-            val workSessionInMillis = convertToMillis(workSession)
-            return workSessionInMillis
+            return convertToMillis(workSession)
         }
 
         fun setWorkSession(minutes: Int) {
             workSession = minutes
-            Log.d("Testing Main Helper", "setWorkSession: $workSession")
         }
 
         fun getShortBreak(): Long {
-            val shortBreakInMillis = convertToMillis(shortBreak)
-            return shortBreakInMillis
+            return convertToMillis(shortBreak)
         }
 
         fun setShortBreak(minutes: Int) {
             shortBreak = minutes
-           //Log.d("Testing Main Helper", "setShortBreak: $shortBreak")
         }
 
         fun getLongBreak(): Long {
-            val longBreakInMillis = convertToMillis(longBreak)
-            return longBreakInMillis
+            return convertToMillis(longBreak)
         }
 
         fun setLongBreak(minutes: Int) {

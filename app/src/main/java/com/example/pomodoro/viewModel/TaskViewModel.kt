@@ -9,13 +9,13 @@ class TaskViewModel: ViewModel() {
 
     val listOfTasks: MutableLiveData<MutableList<Task>> = MutableLiveData(mutableListOf())
 
-    fun addTask(task: Task) {
+    fun addTask(task: TaskViewModel.Task) {
         val updatedList = listOfTasks.value ?: mutableListOf()
         updatedList.add(task)
         listOfTasks.value = updatedList
     }
 
-    fun updateTask(task: Task) {
+    fun updateTask(task: TaskViewModel.Task) {
         val updatedList = listOfTasks.value ?: mutableListOf()
         val existingTaskIndex = updatedList.indexOfFirst { it.name == task.name }
         if (existingTaskIndex >= 0) {
@@ -24,7 +24,7 @@ class TaskViewModel: ViewModel() {
         }
     }
 
-    fun removeTask(task: Task) {
+    fun removeTask(task: TaskViewModel.Task) {
         val updatedList = listOfTasks.value ?: mutableListOf()
         updatedList.remove(task)
         listOfTasks.value = updatedList

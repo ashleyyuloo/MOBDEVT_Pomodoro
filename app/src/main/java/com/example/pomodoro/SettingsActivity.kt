@@ -1,6 +1,7 @@
 package com.example.pomodoro
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,12 +13,13 @@ import androidx.activity.viewModels
 import com.example.pomodoro.databinding.ActivitySettingsBinding
 import com.example.pomodoro.databinding.EditSessionBinding
 import com.example.pomodoro.viewModel.MainViewModel
+import com.example.pomodoro.viewModel.TaskViewModel
 import com.google.android.material.snackbar.Snackbar
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private val colorButtonsMap = mutableMapOf<Button, Boolean>()
 
-    val viewModel by viewModels<MainViewModel> {
+    private val viewModel by viewModels<MainViewModel> {
         MainActivity.MainViewModelFactory(applicationContext)
     }
 
@@ -25,6 +27,11 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val taskViewModel by viewModels<TaskViewModel>()
+        val currentListOfTasks = taskViewModel.listOfTasks.value
+        Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
+
         setupClickListeners()
         setupColorButtons()
         setupTextViews()
@@ -154,6 +161,7 @@ class SettingsActivity : AppCompatActivity() {
         if (newValue in 1..180) {
             etTimeInput.setText(newValue.toString())
             updateMainHelperAndTextViews(category, newValue)
+            Log.d("Testing Settings", "SA Category: $category, Value: $newValue")
         } else {
             Snackbar.make(etTimeInput.rootView, "Value should be between 1 and 180", Snackbar.LENGTH_SHORT).show()
         }
@@ -163,17 +171,16 @@ class SettingsActivity : AppCompatActivity() {
         when (category) {
             "WorkSession" -> {
                 viewModel.updateWorkSessionDuration(newValue.toLong())
-
                 Log.d("Testing Settings", "SA Work Time: $newValue")
             }
             "ShortBreak" -> {
-                MainHelper.setShortBreak(newValue)
+               // MainHelper.setShortBreak(newValue)
                 viewModel.updateShortBreakDuration(newValue.toLong())
 
                 Log.d("Testing Settings", "SA Short Time: $newValue")
             }
             "LongBreak" -> {
-                MainHelper.setLongBreak(newValue)
+                //MainHelper.setLongBreak(newValue)
                 viewModel.updateLongBreakDuration(newValue.toLong())
 
                 Log.d("Testing Settings", "SA Long Time: $newValue")
@@ -182,12 +189,11 @@ class SettingsActivity : AppCompatActivity() {
         setupTextViews()
     }
 
-
-
     //go back to home
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            onBackPressed()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             return true
         }
         return super.onOptionsItemSelected(item)

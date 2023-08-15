@@ -33,37 +33,29 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     var pausedTime: Long = 0
 
     private val _workSessionDuration = MutableLiveData<Long>(MainHelper.getWorkSession())
-    val workSessionDuration: LiveData<Long> = _workSessionDuration
 
     private val _shortBreakDuration = MutableLiveData<Long>(MainHelper.getShortBreak())
-    val shortBreakDuration: LiveData<Long> = _shortBreakDuration
 
     private val _longBreakDuration = MutableLiveData<Long>(MainHelper.getLongBreak())
-    val longBreakDuration: LiveData<Long> = _longBreakDuration
 
     fun updateWorkSessionDuration(newDuration: Long) {
-        _workSessionDuration.value = newDuration
         MainHelper.setWorkSession(newDuration.toInt())
-        Log.d("Testing View Model", "MVM Work Time: ${_workSessionDuration.value}")
+        _workSessionDuration.value = newDuration
     }
 
     fun updateShortBreakDuration(newDuration: Long) {
+        MainHelper.setShortBreak(newDuration.toInt())
         _shortBreakDuration.value = newDuration
-        //Log.d("Testing View Model", "MVM Short Time: ${_shortBreakDuration.value}")
     }
 
     fun updateLongBreakDuration(newDuration: Long) {
+        MainHelper.setLongBreak(newDuration.toInt())
         _longBreakDuration.value = newDuration
-        //Log.d("Testing View Model", "MVM Long Time: ${_longBreakDuration.value}")
     }
 
     init {
-        _workSessionDuration.value = MainHelper.getWorkSession()
-        _shortBreakDuration.value = MainHelper.getShortBreak()
-        _longBreakDuration.value = MainHelper.getLongBreak()
         updateTimerDisplay(_workSessionDuration.value!!)
     }
-
 
     private fun playSound(){
         mediaPlayer = MediaPlayer.create(applicationContext, R.raw.triangle_open)
@@ -106,6 +98,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         }
     }
 
+
     private fun timerFinished() {
         if (isWorkSession) {
             _workSessionCounter.value = _workSessionCounter.value!! + 1
@@ -139,7 +132,6 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         val formattedTime = formatTime(millis)
         _session.value = formattedTime
     }
-
 
     private fun formatTime(millis: Long): String {
         val minutes = (millis / 60000) % 60
