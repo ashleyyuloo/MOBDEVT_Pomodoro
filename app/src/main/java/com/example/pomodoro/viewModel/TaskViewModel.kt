@@ -15,7 +15,7 @@ class TaskViewModel: ViewModel() {
         listOfTasks.value = updatedList
     }
 
-    fun updateTask(task: TaskViewModel.Task) {
+    fun updateTask(task: Task) {
         val updatedList = listOfTasks.value ?: mutableListOf()
         val existingTaskIndex = updatedList.indexOfFirst { it.name == task.name }
         if (existingTaskIndex >= 0) {
@@ -24,7 +24,7 @@ class TaskViewModel: ViewModel() {
         }
     }
 
-    fun removeTask(task: TaskViewModel.Task) {
+    fun removeTask(task: Task) {
         val updatedList = listOfTasks.value ?: mutableListOf()
         updatedList.remove(task)
         listOfTasks.value = updatedList

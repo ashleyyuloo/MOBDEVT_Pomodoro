@@ -322,7 +322,6 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    // °˖✧✿✧˖° TO EXPLAIN °˖✧✿✧˖°
     class MainViewModelFactory(private val applicationContext: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)) {

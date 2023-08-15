@@ -126,6 +126,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         job?.cancel()
         _workSessionCounter.value = 0
         updateTimerDisplay(_workSessionDuration.value!!)
+        Log.d("Testing Settings", "work duration: $_workSessionDuration")
     }
 
     private fun updateTimerDisplay(millis: Long) {

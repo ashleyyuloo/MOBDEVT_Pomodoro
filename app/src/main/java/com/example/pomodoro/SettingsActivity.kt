@@ -79,18 +79,26 @@ class SettingsActivity : AppCompatActivity() {
         val currentState = colorButtonsMap[button] ?: false
         button.tag = !currentState
 
-        val checkBoxDrawable = if (button == binding.btnColor1) {
-            R.drawable.baseline_check_box_24
-        } else if (button in arrayOf(
-                binding.btnColor2, binding.btnColor7, binding.btnColor9,
-                binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
-                binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
-                binding.btnColor13, binding.btnColor14
+        val checkBoxDrawable = if (button in arrayOf(
+                binding.btnColor1,binding.btnColor2,binding.btnColor3, binding.btnColor4, binding.btnColor5
             )) {
-            R.drawable.white_check_box_24
+            R.drawable.baseline_check_box_24
         }else{
             null
         }
+
+//        val checkBoxDrawable = if (button in arrayOf(
+//                binding.btnColor2, binding.btnColor7, binding.btnColor9,
+//                binding.btnColor12, binding.btnColor15, binding.btnColor1
+//                )) {
+//            R.drawable.baseline_check_box_24
+//        } else if (button in arrayOf(
+//                binding.btnColor1,binding.btnColor2,binding.btnColor3, binding.btnColor4, binding.btnColor5
+//            )) {
+//            R.drawable.white_check_box_24
+//        }else{
+//            null
+//        }
 
         button.setCompoundDrawablesRelativeWithIntrinsicBounds(checkBoxDrawable!!, 0, 0, 0)
         colorButtonsMap[button] = true
