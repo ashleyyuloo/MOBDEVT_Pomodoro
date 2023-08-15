@@ -8,10 +8,10 @@ color amaranth
 color beige
 color black
 color blue
+color brunswick
 color dmPrimary
 color dmPrimaryVariant
 color dmSecondary
-color green
 color hint
 color navy_blue
 color orange
@@ -117,9 +117,12 @@ string workSessionTitle
 style Actionbar.dark
 style Actionbar.darktext
 style ActivityBG
+style Base.Theme.AppCompat.Theme3
 style Base.Theme.Pomodoro
 style DeleteBtn
 style EditSessionBG
+style NBase.Theme.Pomodoro
+style Night.Pomodoro
 style Theme.Pomodoro
 style Toolbar.Button.Navigation.Tinted
 style btnClear

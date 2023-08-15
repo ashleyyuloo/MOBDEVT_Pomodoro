@@ -1224,6 +1224,7 @@ int color bright_foreground_inverse_material_dark 0x7f060027
 int color bright_foreground_inverse_material_light 0x7f060028
 int color bright_foreground_material_dark 0x7f060029
 int color bright_foreground_material_light 0x7f06002a
+int color brunswick 0x7f060263
 int color button_material_dark 0x7f06002b
 int color button_material_light 0x7f06002c
 int color cardview_dark_background 0x7f06002d
@@ -1280,7 +1281,6 @@ int color error_color_material_dark 0x7f06005f
 int color error_color_material_light 0x7f060060
 int color foreground_material_dark 0x7f060061
 int color foreground_material_light 0x7f060062
-int color green 0x7f060063
 int color highlighted_text_material_dark 0x7f060064
 int color highlighted_text_material_light 0x7f060065
 int color hint 0x7f060066
@@ -3481,6 +3481,7 @@ int style Base_Theme_AppCompat_Light_Dialog_Alert 0x7f130059
 int style Base_Theme_AppCompat_Light_Dialog_FixedSize 0x7f13005a
 int style Base_Theme_AppCompat_Light_Dialog_MinWidth 0x7f13005b
 int style Base_Theme_AppCompat_Light_DialogWhenLarge 0x7f13005c
+int style Base_Theme_AppCompat_Theme3 0x7f130418
 int style Base_Theme_Material3_Dark 0x7f13005d
 int style Base_Theme_Material3_Dark_BottomSheetDialog 0x7f13005e
 int style Base_Theme_Material3_Dark_Dialog 0x7f13005f
@@ -3690,6 +3691,8 @@ int style MaterialAlertDialog_MaterialComponents_Title_Panel 0x7f13012a
 int style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked 0x7f13012b
 int style MaterialAlertDialog_MaterialComponents_Title_Text 0x7f13012c
 int style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked 0x7f13012d
+int style NBase_Theme_Pomodoro 0x7f130417
+int style Night_Pomodoro 0x7f130416
 int style Platform_AppCompat 0x7f13012e
 int style Platform_AppCompat_Light 0x7f13012f
 int style Platform_MaterialComponents 0x7f130130
