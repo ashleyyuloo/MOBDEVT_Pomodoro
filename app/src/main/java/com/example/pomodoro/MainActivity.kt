@@ -1,4 +1,3 @@
-
 package com.example.pomodoro
 
 import android.annotation.SuppressLint
@@ -8,7 +7,6 @@ import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem

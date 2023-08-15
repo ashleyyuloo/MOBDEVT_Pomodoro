@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="NBase.Theme.Pomodoro" parent="Theme.Material3.Light">
+    <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
         <!-- Customize your light theme here. -->
         <item name="android:statusBarColor">@color/dmPrimaryVariant</item>
         <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
@@ -8,7 +8,7 @@
         <item name="displayOptions">showHome|useLogo|showTitle</item>
     </style>
 
-    <style name="Night.Pomodoro" parent="NBase.Theme.Pomodoro"/>
+    <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
 
     <style name="ActivityBG">
         <item name="android:background">@color/dmPrimary</item>

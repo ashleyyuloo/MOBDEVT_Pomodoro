@@ -1285,7 +1285,6 @@ color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color hint
-color ic_launcher_background
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -2645,21 +2644,7 @@ id bounceStart
 id btnAddTasks
 id btnClearTasks
 id btnColor1
-id btnColor10
-id btnColor11
-id btnColor12
-id btnColor13
-id btnColor14
-id btnColor15
-id btnColor16
 id btnColor2
-id btnColor3
-id btnColor4
-id btnColor5
-id btnColor6
-id btnColor7
-id btnColor8
-id btnColor9
 id btnDecrease
 id btnDeleteTask
 id btnIncrease
@@ -3243,7 +3228,6 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu menu_pomodoro
 mipmap ic_launcher
-mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 raw triangle_open

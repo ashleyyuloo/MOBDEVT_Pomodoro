@@ -2,15 +2,11 @@ package com.example.pomodoro.viewModel
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
-import android.widget.Button
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pomodoro.MainActivity
 import com.example.pomodoro.MainHelper
 import com.example.pomodoro.R
 import kotlinx.coroutines.Job
@@ -100,7 +96,6 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         }
     }
 
-
     private fun timerFinished() {
         if (isWorkSession) {
             _workSessionCounter.value = _workSessionCounter.value!! + 1
@@ -146,5 +141,4 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
             String.format("%02d:%02d:%02d", hours, minutes, seconds)
         }
     }
-
 }

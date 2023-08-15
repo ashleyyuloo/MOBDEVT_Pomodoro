@@ -13,7 +13,6 @@ color dmPrimary
 color dmPrimaryVariant
 color dmSecondary
 color hint
-color ic_launcher_background
 color navy_blue
 color orange
 color pastel_blue
@@ -50,21 +49,7 @@ id WorkSessionLayout
 id btnAddTasks
 id btnClearTasks
 id btnColor1
-id btnColor10
-id btnColor11
-id btnColor12
-id btnColor13
-id btnColor14
-id btnColor15
-id btnColor16
 id btnColor2
-id btnColor3
-id btnColor4
-id btnColor5
-id btnColor6
-id btnColor7
-id btnColor8
-id btnColor9
 id btnDecrease
 id btnDeleteTask
 id btnIncrease
@@ -100,7 +85,6 @@ layout edit_session
 layout item_task
 menu menu_pomodoro
 mipmap ic_launcher
-mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw triangle_open
 string app_name

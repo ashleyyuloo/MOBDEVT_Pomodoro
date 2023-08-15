@@ -1,10 +1,8 @@
 package com.example.pomodoro
 
-import android.util.Log
-
 class MainHelper {
     companion object {
-        private var workSession: Int = 1
+        private var workSession: Int = 25
         private var shortBreak: Int = 5
         private var longBreak: Int = 15
 
