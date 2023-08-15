@@ -104,11 +104,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnStop.visibility = stop
     }
 
-    private var editingTaskIndex: Int = -1
+    private var editingTaskIndex: Int = -1 //-1 means no task is being edited
+
+    // STAN: allows the task views to be viewed, selected and edited
     @SuppressLint("ClickableViewAccessibility")
     private fun setupTaskViews(tasks: List<TaskViewModel.Task>) {
         binding.taskList.removeAllViews()
 
+        //loops through the list of tasks
         tasks.forEachIndexed { index, task ->
             val taskViewBinding = ItemTaskBinding.inflate(layoutInflater)
             val taskView = taskViewBinding.root
@@ -117,39 +120,43 @@ class MainActivity : AppCompatActivity() {
             with(taskViewBinding) {
                 checkboxCompleted.isChecked = task.isCompleted
                 txtTask.text = Editable.Factory.getInstance().newEditable(task.name)
+                //sets the txttask with the taskname and allows it to be editable
 
                 toggleCheckbox(checkboxCompleted, txtTask, task.isCompleted)
 
-                txtTask.isEnabled = !task.isCompleted
+                txtTask.isEnabled = !task.isCompleted //allow edits to to not completed tasks
                 txtTask.setOnTouchListener { _, event ->
                     if (event.action == MotionEvent.ACTION_UP) {
                         val clickedTaskIndex = taskView.tag as Int
 
+                        //if user is trying to edit another task than the one that was previously selected
                         if (editingTaskIndex != clickedTaskIndex) {
-                            editingTaskIndex.takeIf { it != -1 }?.let { previousTaskIndex ->
+                            editingTaskIndex.takeIf { it != -1 }?.let { previousTaskIndex -> //checks for ongoing task edits
                                 tasks[previousTaskIndex].name = txtTask.text.toString()
-                            }
+                            } //save the edit task to their original clicked tasks
 
                             editingTaskIndex = clickedTaskIndex
                             txtTask.isEnabled = true
                             txtTask.requestFocus()
 
-                            binding.btnAddTasks.isEnabled = false
-                            binding.btnClearTasks.isEnabled = false
+                            setButtonsEnabledState(false)
                             taskViewBinding.btnDeleteTask.isEnabled = false
                         }
                     }
                     false
                 }
 
+                //checks for the done and enter key press
                 txtTask.setOnEditorActionListener { _, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_DONE || (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
                         editingTaskIndex.takeIf { it != -1 }?.let { editedTaskIndex ->
                             tasks[editedTaskIndex].name = txtTask.text.toString()
 
+                            //hide the keyboard
                             val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                             inputMethodManager.hideSoftInputFromWindow(txtTask.windowToken, 0)
 
+                            //not editing
                             editingTaskIndex = -1
                             txtTask.clearFocus()
 
@@ -182,16 +189,20 @@ class MainActivity : AppCompatActivity() {
         newTaskViewBinding.btnDeleteTask.isEnabled = false
 
         taskEditText.setOnEditorActionListener { _, actionId, _ ->
+            //done is pressed
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                val taskName = taskEditText.text.toString().trim()
+                val taskName = taskEditText.text.toString().trim() //gets the taskname without the whitespaces
                 if (taskName.isNotEmpty()) {
                     val existingTask = taskViewModel.listOfTasks.value?.find { it.name == taskName }?.name
+                    //checks if theres an existing task by finding the name of that task in the list
 
-                    if (existingTask != null) {
+                    if (existingTask != null) { //it exists
                         Snackbar.make(binding.root, "Task with the same name already exists", Snackbar.LENGTH_SHORT).show()
                     } else {
+                        //hides the keyboard
                         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                         imm.hideSoftInputFromWindow(taskEditText.windowToken, 0)
+
                         val task = TaskViewModel.Task(taskName, isChecked)
                         taskViewModel.addTask(task)
 
@@ -265,19 +276,21 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        val tasks = taskViewModel.listOfTasks.value ?: return
-        val taskStates = tasks.associate { it.name to it.isCompleted }
+        val tasks = taskViewModel.listOfTasks.value ?: return //gets the list of tasks, if it is empty then u do nothing
+        val taskStates = tasks.associate { it.name to it.isCompleted } //stores it like a map
 
         val bundle = Bundle()
         for ((key, value) in taskStates) {
             bundle.putBoolean(key, value)
-        }
+        } //iterates through the takssaktes
 
         outState.putBundle("taskStatesBundle", bundle)
         outState.putInt("btnPlayVisibility", binding.btnPlay.visibility)
         outState.putInt("btnPauseVisibility", binding.btnPause.visibility)
         outState.putInt("btnStopVisibility", binding.btnStop.visibility)
     }
+
+    /////////// TO EXPLAIN ////////////
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 

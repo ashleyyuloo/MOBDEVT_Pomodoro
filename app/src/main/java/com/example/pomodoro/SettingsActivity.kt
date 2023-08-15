@@ -19,7 +19,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
-    private val colorButtonsMap = mutableMapOf<Button, Boolean>()
 
     private val viewModel by viewModels<MainViewModel> {
         MainActivity.MainViewModelFactory(applicationContext)
@@ -96,6 +95,7 @@ class SettingsActivity : AppCompatActivity() {
         return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
+    // STAN: para don sa settings. this displays "25" "5" "15" (default values using mainhelper)
     private fun setupTextViews() {
         binding.txtWorkMin.text = convertMillisecondsToMinutes(MainHelper.getWorkSession()).toString()
         binding.txtShortMin.text = convertMillisecondsToMinutes(MainHelper.getShortBreak()).toString()
@@ -106,6 +106,7 @@ class SettingsActivity : AppCompatActivity() {
         return milliseconds / (60 * 1000)
     }
 
+    // STAN: opens edit_session.xml
     private fun showEditSessionDialog(category: String) {
         val dialog = Dialog(this)
         val dialogBinding = EditSessionBinding.inflate(layoutInflater)
@@ -121,6 +122,7 @@ class SettingsActivity : AppCompatActivity() {
         }
 
     etTimeInput.setText(timeInMinutes.toString())
+
         dialogBinding.tvTimeCat.text = when (category) {
             "WorkSession" -> getString(R.string.workSessionTitle)
             "ShortBreak" -> getString(R.string.shrtBreakTitle)
@@ -154,6 +156,7 @@ class SettingsActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    // STAN: for the increase and decrease **see showEditSessionDialog for usage
     private fun updateSessionTime(etTimeInput: EditText, category: String, change: Int) {
         val currentValue = etTimeInput.text.toString().toIntOrNull() ?: 0
         val newValue = currentValue + change

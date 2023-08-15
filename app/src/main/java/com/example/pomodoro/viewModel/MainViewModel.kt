@@ -23,7 +23,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
     private val _workSessionCounter = MutableLiveData<Int>(0)
     val workSessionCounter: LiveData<Int> = _workSessionCounter
 
-    private var job: Job? = null // to get the coroutine job (used for timer)
+    private var job: Job? = null // to get the coroutine job (used for timer; ASYNCH JOB)
     private var remainingTime: Long = 0
     private var isWorkSession = false
     var pausedTime: Long = 0
@@ -60,6 +60,7 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         }
         mediaPlayer!!.start()
     }
+
     fun startWorkSession() {
         isWorkSession = true
         if (pausedTime > 0) {
@@ -80,19 +81,18 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         startTimer(_longBreakDuration.value!!)
     }
 
+    // STAN: starts the timer
     fun startTimer(duration: Long) {
         job?.cancel()
-        job = viewModelScope.launch {
-            remainingTime = duration
+        job = viewModelScope.launch {// starts the count
+            remainingTime = duration //duration is the session values in millis
 
             while (remainingTime > 0) {
                 updateTimerDisplay(remainingTime)
-                delay(1000)
-                remainingTime -= 1000
-
-                Log.d("Testing time", "Timer: $remainingTime")
+                delay(1000) //after 1 second
+                remainingTime -= 1000 // subtract 1 second from the remaining time
             }
-            timerFinished()
+            timerFinished() //reamining time is zero
         }
     }
 
@@ -114,11 +114,13 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
         }
     }
 
+    //STAN: Pasues the timer
     fun pauseTimer() {
         job?.cancel()
         pausedTime = remainingTime
     }
 
+    // STAN: Stops the timer
     fun stopTimer() {
         job?.cancel()
         _workSessionCounter.value = 0
