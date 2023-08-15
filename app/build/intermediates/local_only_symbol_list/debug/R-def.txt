@@ -4,6 +4,7 @@ array com_google_android_gms_fonts_certs
 array com_google_android_gms_fonts_certs_dev
 array com_google_android_gms_fonts_certs_prod
 array preloaded_fonts
+color amaranth
 color beige
 color black
 color blue
@@ -23,7 +24,6 @@ color pink
 color primary
 color primaryVariant
 color purple
-color red
 color secondary
 color white
 color yellow
@@ -78,6 +78,8 @@ id imageView3
 id imageView4
 id linearLayout
 id linearLayout2
+id linearLayout3
+id tableLayout
 id taskLayout
 id taskList
 id textView
@@ -126,7 +128,11 @@ style btnTask
 style btnTimer
 style checkbox
 style lndBtnTimer
+style lndTimerSetting
+style lndTxtColorTitleSetting
+style lndTxtSetting
 style lndTxtTimer
+style lndTxtTitleSetting
 style taskList
 style timerSetting
 style txtColorTitleSetting

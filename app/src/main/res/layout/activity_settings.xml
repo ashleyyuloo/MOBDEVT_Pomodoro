@@ -9,18 +9,18 @@
 
     <LinearLayout
         android:id="@+id/WorkSessionLayout"
+        style="@style/timerSetting"
         app:layout_constraintEnd_toStartOf="@+id/ShortBreakLayout"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/timerSetting">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtWorkMin"
             style="@style/txtSetting"
-            android:text="25"
-             />
+            android:layout_width="match_parent"
+            android:text="25" />
 
         <TextView
             android:id="@+id/txtWorkTitle"
@@ -110,7 +110,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/primary"
                 app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
@@ -123,7 +123,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/dmPrimary"
                 app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"
@@ -264,7 +264,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/amaranth"
                 app:cornerRadius="5dp"
                 app:icon="@null"
                 app:iconGravity="textStart"

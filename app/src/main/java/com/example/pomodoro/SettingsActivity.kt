@@ -46,6 +46,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupColorButtons() {
+
         val whiteButtons = arrayOf(
             binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
             binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
@@ -54,7 +55,7 @@ class SettingsActivity : AppCompatActivity() {
         )
 
         for (button in whiteButtons) {
-            colorButtonsMap[button] = false
+
             button.setOnClickListener {
                 handleColorButtonClick(button)
             }

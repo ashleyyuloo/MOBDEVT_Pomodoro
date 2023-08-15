@@ -1,150 +1,158 @@
 [
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/menu_menu_pomodoro.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/menu/menu_pomodoro.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_outline_bg.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/outline_bg.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout_edit_session.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\edit_session.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout_item_task.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout/item_task.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_baseline_delete_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/baseline_delete_24.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_tasks_checkbox.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\tasks_checkbox.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout_edit_session.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout/edit_session.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_button_selector.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/button_selector.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\font_belgrano.ttf.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\font\\belgrano.ttf"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_tasks_checkbox.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/tasks_checkbox.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_circle_filled.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/circle_filled.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_baseline_add_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/baseline_add_24.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\raw_triangle_open.mp3.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\raw\\triangle_open.mp3"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/xml_backup_rules.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\menu_menu_pomodoro.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\menu\\menu_pomodoro.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_circle_outline.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/circle_outline.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_baseline_delete_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\baseline_delete_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_baseline_check_box_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/baseline_check_box_24.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/font_belgrano.ttf.flat",
-        "source": "com.example.pomodoro.app-main-37:/font/belgrano.ttf"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout-land_activity_main.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout-land\\activity_main.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\font_rubik_mono_one.ttf.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\font\\rubik_mono_one.ttf"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout_activity_main.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout/activity_main.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout-land_activity_main.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout-land/activity_main.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout-land_activity_settings.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout-land\\activity_settings.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_baseline_remove_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/baseline_remove_24.xml"
+        "merged": "com.example.pomodoro.app-merged_res-35:/layout-land_activity_settings.xml.flat",
+        "source": "com.example.pomodoro.app-main-37:/layout-land/activity_settings.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_ic_settings.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/ic_settings.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_white_check_box_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/white_check_box_24.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_baseline_check_box_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\baseline_check_box_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_baseline_check_box_outline_blank_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\baseline_check_box_outline_blank_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\ic_settings.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/layout_activity_settings.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/layout/activity_settings.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_button_selector.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\button_selector.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_circle_filled.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\circle_filled.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/raw_triangle_open.mp3.flat",
-        "source": "com.example.pomodoro.app-main-37:/raw/triangle_open.mp3"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_outline_bg.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\outline_bg.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_white_check_box_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\white_check_box_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_baseline_add_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\baseline_add_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/drawable_baseline_check_box_outline_blank_24.xml.flat",
-        "source": "com.example.pomodoro.app-main-37:/drawable/baseline_check_box_outline_blank_24.xml"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_baseline_remove_24.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\baseline_remove_24.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\drawable_circle_outline.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\drawable\\circle_outline.xml"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/font_rubik_mono_one.ttf.flat",
-        "source": "com.example.pomodoro.app-main-37:/font/rubik_mono_one.ttf"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pomodoro.app-merged_res-35:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pomodoro.app-main-37:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout_item_task.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\item_task.xml"
+    },
+    {
+        "merged": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-merged_res-35:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\12108906\\.gradle\\daemon\\8.0\\com.example.pomodoro.app-main-37:\\layout\\activity_main.xml"
     }
 ]
