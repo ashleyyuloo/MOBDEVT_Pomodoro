@@ -174,19 +174,12 @@ class SettingsActivity : AppCompatActivity() {
         when (category) {
             "WorkSession" -> {
                 viewModel.updateWorkSessionDuration(newValue.toLong())
-                Log.d("Testing Settings", "SA Work Time: $newValue")
             }
             "ShortBreak" -> {
-               // MainHelper.setShortBreak(newValue)
                 viewModel.updateShortBreakDuration(newValue.toLong())
-
-                Log.d("Testing Settings", "SA Short Time: $newValue")
             }
             "LongBreak" -> {
-                //MainHelper.setLongBreak(newValue)
                 viewModel.updateLongBreakDuration(newValue.toLong())
-
-                Log.d("Testing Settings", "SA Long Time: $newValue")
             }
         }
         setupTextViews()

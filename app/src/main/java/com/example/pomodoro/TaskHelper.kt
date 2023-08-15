@@ -1,9 +1,6 @@
 package com.example.pomodoro
 
-import android.os.Bundle
 import com.example.pomodoro.viewModel.TaskViewModel
-
-data class Task(val name: String, var isCompleted: Boolean = false)
 class TaskHelper {
     companion object {
         private val taskList: MutableList<TaskViewModel.Task> = mutableListOf()

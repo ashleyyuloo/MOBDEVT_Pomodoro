@@ -135,9 +135,11 @@ class MainActivity : AppCompatActivity() {
                             editingTaskIndex = clickedTaskIndex
                             txtTask.isEnabled = true
                             txtTask.requestFocus()
-                        }
 
-                        binding.btnAddTasks.isEnabled = false
+                            binding.btnAddTasks.isEnabled = false
+                            binding.btnClearTasks.isEnabled = false
+                            taskViewBinding.btnDeleteTask.isEnabled = false
+                        }
                     }
                     false
                 }
@@ -152,6 +154,9 @@ class MainActivity : AppCompatActivity() {
 
                             editingTaskIndex = -1
                             txtTask.clearFocus()
+
+                            setButtonsEnabledState(true)
+                            taskViewBinding.btnDeleteTask.isEnabled = true
                         }
                         true
                     } else {
@@ -175,9 +180,8 @@ class MainActivity : AppCompatActivity() {
 
         val taskEditText = newTaskViewBinding.txtTask
 
-        binding.btnClearTasks.isEnabled = false
+        setButtonsEnabledState(false)
         newTaskViewBinding.btnDeleteTask.isEnabled = false
-        binding.btnAddTasks.isEnabled = false
 
         taskEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -193,9 +197,8 @@ class MainActivity : AppCompatActivity() {
                         val task = TaskViewModel.Task(taskName, isChecked)
                         taskViewModel.addTask(task)
 
-                        binding.btnClearTasks.isEnabled = true
+                        setButtonsEnabledState(true)
                         newTaskViewBinding.btnDeleteTask.isEnabled = true
-                        binding.btnAddTasks.isEnabled = true
                     }
                     true
                 } else {
@@ -207,13 +210,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.taskList.addView(newTaskView)
-
-        // Request focus on the EditText
         taskEditText.requestFocus()
 
-        // Show the keyboard
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(taskEditText, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun setButtonsEnabledState(enabled: Boolean) {
+        binding.btnAddTasks.isEnabled = enabled
+        binding.btnClearTasks.isEnabled = enabled
     }
 
     private fun toggleCheckbox(checkbox: CheckBox, textView: TextView, isChecked: Boolean) {
@@ -275,7 +280,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt("btnPauseVisibility", binding.btnPause.visibility)
         outState.putInt("btnStopVisibility", binding.btnStop.visibility)
     }
-
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
@@ -305,10 +309,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
             viewModel.stopTimer()
-
-            val currentListOfTasks = taskViewModel.listOfTasks.value
-            Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
-
             return true
         }
         return super.onOptionsItemSelected(item)
