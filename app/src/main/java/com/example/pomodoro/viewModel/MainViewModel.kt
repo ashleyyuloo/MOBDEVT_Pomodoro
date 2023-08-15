@@ -93,6 +93,8 @@ class MainViewModel(private val applicationContext: Context) : ViewModel() {
                 updateTimerDisplay(remainingTime)
                 delay(1000)
                 remainingTime -= 1000
+
+                Log.d("Testing time", "Timer: $remainingTime")
             }
             timerFinished()
         }

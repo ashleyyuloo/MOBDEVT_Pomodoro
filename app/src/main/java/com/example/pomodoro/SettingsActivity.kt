@@ -28,27 +28,21 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val taskViewModel by viewModels<TaskViewModel>()
-        val currentListOfTasks = taskViewModel.listOfTasks.value
-        Log.d("Testing Settings", "Current List of Tasks: $currentListOfTasks")
+        with(binding){
+            WorkSessionLayout.setOnClickListener {
+                showEditSessionDialog("WorkSession")
+            }
 
-        setupClickListeners()
+            ShortBreakLayout.setOnClickListener {
+                showEditSessionDialog("ShortBreak")
+            }
+
+            LongBreakLayout.setOnClickListener {
+                showEditSessionDialog("LongBreak")
+            }
+        }
         setupColorButtons()
         setupTextViews()
-    }
-
-    private fun setupClickListeners() {
-        binding.WorkSessionLayout.setOnClickListener {
-            showEditSessionDialog("WorkSession")
-        }
-
-        binding.ShortBreakLayout.setOnClickListener {
-            showEditSessionDialog("ShortBreak")
-        }
-
-        binding.LongBreakLayout.setOnClickListener {
-            showEditSessionDialog("LongBreak")
-        }
     }
 
     private fun setupColorButtons() {

@@ -65,15 +65,11 @@ class MainActivity : AppCompatActivity() {
                 binding.btnStop.visibility = savedInstanceState.getInt("btnStopVisibility", View.GONE)
             }
             else{
-                btnPlay.visibility = View.VISIBLE
-                btnPause.visibility = View.GONE
-                btnStop.visibility = View.GONE
+                setButtonVisibility(View.VISIBLE, View.GONE, View.GONE)
             }
 
             btnPlay.setOnClickListener {
-                btnPlay.visibility = View.GONE // Hide Play button
-                btnPause.visibility = View.VISIBLE // Show Pause button
-                btnStop.visibility = View.VISIBLE // Show Stop button
+                setButtonVisibility(View.GONE, View.VISIBLE, View.VISIBLE)
 
                 if (viewModel.pausedTime > 0) {
                     viewModel.startTimer(viewModel.pausedTime)
@@ -84,16 +80,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             btnPause.setOnClickListener {
-                btnPlay.visibility = View.VISIBLE // Show Play button
-                btnPause.visibility = View.GONE // Hide Pause button
-                btnStop.visibility = View.VISIBLE // Show Stop button
+                setButtonVisibility(View.VISIBLE, View.GONE, View.VISIBLE)
                 viewModel.pauseTimer()
             }
 
             btnStop.setOnClickListener {
-                btnPlay.visibility = View.VISIBLE // Show Play button
-                btnPause.visibility = View.GONE // Hide Pause button
-                btnStop.visibility = View.GONE // Hide Stop button
+                setButtonVisibility(View.VISIBLE, View.GONE, View.GONE)
                 viewModel.stopTimer()
             }
 
@@ -106,6 +98,12 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun setButtonVisibility(play: Int, pause: Int, stop: Int) {
+        binding.btnPlay.visibility = play
+        binding.btnPause.visibility = pause
+        binding.btnStop.visibility = stop
     }
 
     private var editingTaskIndex: Int = -1
