@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,7 +79,52 @@ public final class ActivitySettingsBinding implements ViewBinding {
   @NonNull
   public final Button btnColor9;
 
-  @NonNull
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   */
+  @Nullable
+  public final LinearLayout linearLayout3;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   */
+  @Nullable
+  public final TableLayout tableLayout;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
   public final TextView textView;
 
   @NonNull
@@ -107,7 +153,8 @@ public final class ActivitySettingsBinding implements ViewBinding {
       @NonNull Button btnColor16, @NonNull Button btnColor2, @NonNull Button btnColor3,
       @NonNull Button btnColor4, @NonNull Button btnColor5, @NonNull Button btnColor6,
       @NonNull Button btnColor7, @NonNull Button btnColor8, @NonNull Button btnColor9,
-      @NonNull TextView textView, @NonNull TextView txtLongMin, @NonNull TextView txtLongTitle,
+      @Nullable LinearLayout linearLayout3, @Nullable TableLayout tableLayout,
+      @Nullable TextView textView, @NonNull TextView txtLongMin, @NonNull TextView txtLongTitle,
       @NonNull TextView txtShortMin, @NonNull TextView txtShortTitle, @NonNull TextView txtWorkMin,
       @NonNull TextView txtWorkTitle) {
     this.rootView = rootView;
@@ -130,6 +177,8 @@ public final class ActivitySettingsBinding implements ViewBinding {
     this.btnColor7 = btnColor7;
     this.btnColor8 = btnColor8;
     this.btnColor9 = btnColor9;
+    this.linearLayout3 = linearLayout3;
+    this.tableLayout = tableLayout;
     this.textView = textView;
     this.txtLongMin = txtLongMin;
     this.txtLongTitle = txtLongTitle;
@@ -280,11 +329,14 @@ public final class ActivitySettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.linearLayout3;
+      LinearLayout linearLayout3 = ViewBindings.findChildViewById(rootView, id);
+
+      id = R.id.tableLayout;
+      TableLayout tableLayout = ViewBindings.findChildViewById(rootView, id);
+
       id = R.id.textView;
       TextView textView = ViewBindings.findChildViewById(rootView, id);
-      if (textView == null) {
-        break missingId;
-      }
 
       id = R.id.txtLongMin;
       TextView txtLongMin = ViewBindings.findChildViewById(rootView, id);
@@ -325,8 +377,8 @@ public final class ActivitySettingsBinding implements ViewBinding {
       return new ActivitySettingsBinding((ConstraintLayout) rootView, LongBreakLayout,
           ShortBreakLayout, WorkSessionLayout, btnColor1, btnColor10, btnColor11, btnColor12,
           btnColor13, btnColor14, btnColor15, btnColor16, btnColor2, btnColor3, btnColor4,
-          btnColor5, btnColor6, btnColor7, btnColor8, btnColor9, textView, txtLongMin, txtLongTitle,
-          txtShortMin, txtShortTitle, txtWorkMin, txtWorkTitle);
+          btnColor5, btnColor6, btnColor7, btnColor8, btnColor9, linearLayout3, tableLayout,
+          textView, txtLongMin, txtLongTitle, txtShortMin, txtShortTitle, txtWorkMin, txtWorkTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
