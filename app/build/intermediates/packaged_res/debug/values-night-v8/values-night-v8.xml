@@ -14,6 +14,13 @@
     <style name="ActivityBG">
         <item name="android:background">@color/dmPrimary</item>
     </style>
+    <style name="Base.Theme.Pomodoro" parent="Theme.Material3.Light">
+        
+        <item name="android:statusBarColor">@color/dmPrimaryVariant</item>
+        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
+        <item name="actionBarStyle">@style/Actionbar.dark</item>
+        <item name="displayOptions">showHome|useLogo|showTitle</item>
+    </style>
     <style name="DeleteBtn">
         <item name="android:backgroundTint">@color/dmSecondary</item>
         <item name="iconTint">@color/dmPrimaryVariant</item>
@@ -21,14 +28,7 @@
     <style name="EditSessionBG">
         <item name="android:background">@color/dmSecondary</item>
     </style>
-    <style name="NBase.Theme.Pomodoro" parent="Theme.Material3.Light">
-        
-        <item name="android:statusBarColor">@color/dmPrimaryVariant</item>
-        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
-        <item name="actionBarStyle">@style/Actionbar.dark</item>
-        <item name="displayOptions">showHome|useLogo|showTitle</item>
-    </style>
-    <style name="Night.Pomodoro" parent="NBase.Theme.Pomodoro"/>
+    <style name="Theme.Pomodoro" parent="Base.Theme.Pomodoro"/>
     <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">@color/dmSecondary</item>
     </style>
