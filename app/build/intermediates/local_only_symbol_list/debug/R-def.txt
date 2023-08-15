@@ -13,6 +13,7 @@ color dmPrimary
 color dmPrimaryVariant
 color dmSecondary
 color hint
+color ic_launcher_background
 color navy_blue
 color orange
 color pastel_blue
@@ -99,6 +100,7 @@ layout edit_session
 layout item_task
 menu menu_pomodoro
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw triangle_open
 string app_name

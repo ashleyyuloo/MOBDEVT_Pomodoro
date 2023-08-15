@@ -25,7 +25,6 @@ class SettingsActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
         MainActivity.MainViewModelFactory(applicationContext)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
@@ -49,36 +48,52 @@ class SettingsActivity : AppCompatActivity() {
 
     }
 
-    private fun setupColorButtons() {
-        val defaultTheme = R.drawable.baseline_check_box_24
-        val whiteButtons = arrayOf(
+
+    private val colorButtons by lazy {
+        listOf(
             binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
             binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
             binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
             binding.btnColor13, binding.btnColor14
         )
+    }
 
-        for (button in whiteButtons) {
+    private val defaultCheck = R.drawable.baseline_check_box_24
 
+    private fun setupColorButtons() {
+        for (button in colorButtons) {
             button.setOnClickListener {
                 handleColorButtonClick(button)
 
-                when(button){
+                when (button) {
+                    binding.btnColor1 -> {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }
                     binding.btnColor2 -> {
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                     }
-                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    // Add more cases for other buttons if needed
                 }
             }
-            if(isDarkModeOn()){
+
+            if (isDarkModeOn()) {
                 binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
                 handleColorButtonClick(binding.btnColor2)
-            }
-            else{
-                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(defaultTheme, 0, 0, 0)
+            } else {
+                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(defaultCheck, 0, 0, 0)
             }
         }
+    }
 
+    private fun handleColorButtonClick(button: Button) {
+        colorButtons.forEach { btn ->
+            val isSelected = (btn == button)
+            btn.tag = isSelected
+            btn.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                if (isSelected) R.drawable.baseline_check_box_24 else 0,
+                0, 0, 0
+            )
+        }
     }
 
     private fun isDarkModeOn(): Boolean {
@@ -86,49 +101,73 @@ class SettingsActivity : AppCompatActivity() {
         return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
-    private fun handleColorButtonClick(button: Button) {
 
-        colorButtonsMap.forEach { (btn, isSelected) ->
-            if (isSelected) {
-                btn.tag = false
-                btn.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
-                colorButtonsMap[btn] = false
-            }
-        }
-
-        val currentState = colorButtonsMap[button] ?: false
-        button.tag = !currentState
-
-        val checkBoxDrawable = if (button in arrayOf(
-                binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
-                binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
-                binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
-                binding.btnColor13, binding.btnColor14
-            )) {
-                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
-                R.drawable.baseline_check_box_24
-        }else{
-            null
-        }
-
-
+//
+//    private fun setupColorButtons() {
+//        val defaultTheme = R.drawable.baseline_check_box_24
+//        val whiteButtons = arrayOf(
+//            binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
+//            binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
+//            binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
+//            binding.btnColor13, binding.btnColor14
+//        )
+//
+//        for (button in whiteButtons) {
+//
+//            button.setOnClickListener {
+//                handleColorButtonClick(button)
+//
+//                when(button){
+//                    binding.btnColor2 -> {
+//                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                    }
+//                    else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                }
+//            }
+//            if(isDarkModeOn()){
+//                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+//                handleColorButtonClick(binding.btnColor2)
+//            }
+//            else{
+//                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(defaultTheme, 0, 0, 0)
+//            }
+//        }
+//
+//    }
+//
+//    private fun isDarkModeOn(): Boolean {
+//        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+//        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
+//    }
+//
+//    private fun handleColorButtonClick(button: Button) {
+//
+//        colorButtonsMap.forEach { (btn, isSelected) ->
+//            if (isSelected) {
+//                btn.tag = false
+//                btn.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+//                colorButtonsMap[btn] = false
+//            }
+//        }
+//
+//        val currentState = colorButtonsMap[button] ?: false
+//        button.tag = !currentState
+//
 //        val checkBoxDrawable = if (button in arrayOf(
-//                binding.btnColor2, binding.btnColor7, binding.btnColor9,
-//                binding.btnColor12, binding.btnColor15, binding.btnColor1
-//                )) {
-//            R.drawable.baseline_check_box_24
-//        } else if (button in arrayOf(
-//                binding.btnColor1,binding.btnColor2,binding.btnColor3, binding.btnColor4, binding.btnColor5
+//                binding.btnColor1, binding.btnColor2, binding.btnColor7, binding.btnColor9,
+//                binding.btnColor12, binding.btnColor15, binding.btnColor16, binding.btnColor3, binding.btnColor4, binding.btnColor5,
+//                binding.btnColor6, binding.btnColor8, binding.btnColor10, binding.btnColor11,
+//                binding.btnColor13, binding.btnColor14
 //            )) {
-//            R.drawable.white_check_box_24
+//                binding.btnColor1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+//                R.drawable.baseline_check_box_24
 //        }else{
 //            null
 //        }
-
-        button.setCompoundDrawablesRelativeWithIntrinsicBounds(checkBoxDrawable!!, 0, 0, 0)
-        colorButtonsMap[button] = true
-    }
-
+//        button.setCompoundDrawablesRelativeWithIntrinsicBounds(checkBoxDrawable!!, 0, 0, 0)
+//        colorButtonsMap[button] = true
+//    }
+//
 
     private fun setupTextViews() {
         binding.txtWorkMin.text = convertMillisecondsToMinutes(MainHelper.getWorkSession()).toString()
